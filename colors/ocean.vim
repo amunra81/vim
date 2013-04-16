@@ -21,7 +21,7 @@ hi Folded guifg=#ffd700 guibg=#555555 guisp=#555555 gui=NONE ctermfg=220 ctermbg
 hi PreCondit guifg=#ffa0a0 guibg=NONE guisp=NONE gui=NONE ctermfg=217 ctermbg=NONE cterm=NONE
 hi Include guifg=#ffa0a0 guibg=NONE guisp=NONE gui=NONE ctermfg=217 ctermbg=NONE cterm=NONE
 hi Float guifg=#ffa0a0 guibg=NONE guisp=NONE gui=NONE ctermfg=217 ctermbg=NONE cterm=NONE
-hi StatusLineNC guifg=#7777777 guibg=#c2bfa5 guisp=#c2bfa5 gui=NONE ctermfg=196 ctermbg=187 cterm=NONE
+hi StatusLineNC guifg=#777777 guibg=#c2bfa5 guisp=#c2bfa5 gui=NONE ctermfg=196 ctermbg=187 cterm=NONE
 "hi CTagsMember -- no settings --
 hi NonText guifg=#81bed6 guibg=#2669c2 guisp=#2669c2 gui=NONE ctermfg=110 ctermbg=4 cterm=NONE
 "hi CTagsGlobalConstant -- no settings --
@@ -71,7 +71,7 @@ hi PreProc guifg=#ffa0a0 guibg=NONE guisp=NONE gui=NONE ctermfg=217 ctermbg=NONE
 hi Visual guifg=#f0e68c guibg=#6b8e23 guisp=#6b8e23 gui=NONE ctermfg=228 ctermbg=64 cterm=NONE
 "hi MoreMsg -- no settings --
 "hi SpellCap -- no settings --
-hi VertSplit guifg=#7777777 guibg=#c2bfa5 guisp=#c2bfa5 gui=NONE ctermfg=196 ctermbg=187 cterm=NONE
+hi VertSplit guifg=#777777 guibg=#c2bfa5 guisp=#c2bfa5 gui=NONE ctermfg=196 ctermbg=187 cterm=NONE
 hi Exception guifg=#50f000 guibg=NONE guisp=NONE gui=NONE ctermfg=82 ctermbg=NONE cterm=NONE
 hi Keyword guifg=#50f000 guibg=NONE guisp=NONE gui=NONE ctermfg=82 ctermbg=NONE cterm=NONE
 hi Type guifg=#50f000 guibg=NONE guisp=NONE gui=NONE ctermfg=82 ctermbg=NONE cterm=NONE
@@ -79,7 +79,7 @@ hi Type guifg=#50f000 guibg=NONE guisp=NONE gui=NONE ctermfg=82 ctermbg=NONE cte
 hi Cursor guifg=#708090 guibg=#f0e68c guisp=#f0e68c gui=NONE ctermfg=60 ctermbg=228 cterm=NONE
 "hi SpellLocal -- no settings --
 "hi Error -- no settings --
-hi PMenu guifg=#7777777 guibg=#c2bfa5 guisp=#c2bfa5 gui=NONE ctermfg=196 ctermbg=187 cterm=NONE
+hi PMenu guifg=#777777 guibg=#c2bfa5 guisp=#c2bfa5 gui=NONE ctermfg=196 ctermbg=187 cterm=NONE
 hi SpecialKey guifg=#9acd32 guibg=NONE guisp=NONE gui=NONE ctermfg=149 ctermbg=NONE cterm=NONE
 hi Constant guifg=#f09a58 guibg=NONE guisp=NONE gui=NONE ctermfg=215 ctermbg=NONE cterm=NONE
 "hi DefinedName -- no settings --
