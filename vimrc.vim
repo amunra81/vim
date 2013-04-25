@@ -13,6 +13,7 @@ au Bufenter *.hs map <F9> :w<CR>:make<CR>
 au Bufenter *.hs setlocal completefunc=CompleteHaddock
 
 map <F2> :cd %:p:h<CR>
+map <C-Tab> <C-w><C-w>
 set expandtab
 set tabstop=4
 set shiftwidth=4
