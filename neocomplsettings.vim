@@ -1,3 +1,4 @@
+
 " Disable AutoComplPop. Comment out this line if AutoComplPop is not installed.
 let g:acp_enableAtStartup = 0
 " Launches neocomplcache automatically on vim startup.
@@ -72,3 +73,4 @@ let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
 let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+let g:necoghc_enable_detailed_browse = 1
