@@ -10,7 +10,7 @@ au Bufenter *.hs compiler ghc
 au Bufenter *.hs map <F5> :!ghc --make -o ~/Sites/%:t:r.cgi %<CR>
 au Bufenter *.hs map <F9> :w<CR>:make<CR>
 au Bufenter *.hs map <F9> :w<CR>:make<CR>
-au Bufenter *.hs setlocal completefunc=CompleteHaddock
+"au Bufenter *.hs setlocal completefunc=CompleteHaddock
 
 map <F2> :cd %:p:h<CR>
 map <C-Tab> <C-w><C-w>
@@ -64,3 +64,4 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 "   -- NEO COMPL --
 " -------------------
 source ~/.vim/neocomplsettings.vim
+let g:necoghc_enable_detailed_browse = 1
