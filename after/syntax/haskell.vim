@@ -72,7 +72,7 @@ if s:extraConceal
         
     " Only replace the dot, avoid taking spaces around.
     syntax match hsNiceOperator /\s\.\s/ms=s+1,me=e-1 conceal cchar=∘
-    syntax match hsNiceOperator "\.\." conceal cchar=‥
+    " syntax match hsNiceOperator "\.\." conceal cchar=‥
 endif
 
 
