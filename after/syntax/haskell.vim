@@ -42,6 +42,7 @@ syntax match hsNiceOperator "\<pi\>" conceal cchar=π
 syntax match hsNiceOperator "==" conceal cchar=≡
 syntax match hsNiceOperator "\/=" conceal cchar=≠
 syntax match hsNiceOperator ">>" conceal cchar=»
+syntax match hsNiceOperator ">>>" conceal cchar=⇶
 
 sy match hs_DeclareFunction /^[a-z_(]\S*\(\s\|\n\)*::/me=e-2 contains=hs_FunctionName,hs_OpFunctionName
 
@@ -80,4 +81,5 @@ endif
 hi link hsNiceOperator Operator
 hi! link Conceal Operator
 setlocal conceallevel=2
+setlocal concealcursor=vinc
 
