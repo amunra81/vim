@@ -9,16 +9,17 @@ au BufRead,BufNewFile *.fs set filetype=fs
 au BufRead,BufNewFile *.fsx set filetype=fs
 au Bufenter *.hs compiler ghc
 au Bufenter *.hs map <F5> :!ghc --make -o ~/Sites/%:t:r.cgi %<CR>
-au Bufenter *.hs map <F9> :w<CR>:make<CR>
-au Bufenter *.hs map <F9> :w<CR>:make<CR>
+au Bufenter *.hs map <C-x> :w<CR>:make<CR>
 "au Bufenter *.hs setlocal completefunc=CompleteHaddock
 au VimEnter *.* setlocal completefunc=CompleteHaddock
+
 
 map <F2> :cd %:p:h<CR>
 map <C-Tab> <C-w><C-w>
 set expandtab
 set tabstop=4
 set shiftwidth=4
+set relativenumber
 filetype plugin indent on
 "
 " This is standard pathogen and vim setup
@@ -66,3 +67,13 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 " -------------------
 source ~/.vim/neocomplsettings.vim
 let g:necoghc_enable_detailed_browse = 1
+
+" disable the arrow keys
+inoremap  <Up>     <NOP>
+inoremap  <Down>   <NOP>
+inoremap  <Left>   <NOP>
+inoremap  <Right>  <NOP>
+noremap   <Up>     <NOP>
+noremap   <Down>   <NOP>
+noremap   <Left>   <NOP>
+noremap   <Right>  <NOP>
