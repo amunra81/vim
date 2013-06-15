@@ -1,4 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/private/etc/apache2/users'
 let g:netrw_dirhist_2='/Users/horus/projects/haskell/parsec/parsec3-1.0.0.4/Text/Parsec'
+let g:netrw_dirhist_3='/Users/horus/.ghc/x86_64-darwin-7.4.2/package.conf.d'
+let g:netrw_dirhist_4='/Users/horus/projects/haskell/yosog/cabal-dev/packages'
+let g:netrw_dirhist_5='/Users/horus/projects/haskell/yosog/cabal-dev/packages-7.4.2.conf'
+let g:netrw_dirhist_6='/Users/horus/projects/haskell/Digester'
