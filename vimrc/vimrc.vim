@@ -4,10 +4,6 @@ cd $HOME/projects/haskell
 
 au BufRead,BufNewFile *.fs set filetype=fs
 au BufRead,BufNewFile *.fsx set filetype=fs
-au Bufenter *.hs compiler ghc
-au Bufenter *.hs map <F5> :!ghc --make -o ~/Sites/%:t:r.cgi %<CR>
-au Bufenter *.hs map <C-x> :w<CR>:make<CR>
-"au Bufenter *.hs setlocal completefunc=CompleteHaddock
 au VimEnter *.* setlocal completefunc=CompleteHaddock
 
 map <F2> :cd %:p:h<CR>
@@ -53,6 +49,13 @@ let g:haddock_browser_callformat = "%s %s"
 " let g:haddock_docdir = "/Library/Haskell/ghc-7.4.2/doc"
 let g:paredit_mode = 1
 
+au Bufenter *.hs compiler ghc
+au Bufenter *.hs map <F6> :!ghc --make -o ~/Sites/%:t:r.cgi %<CR>
+au Bufenter *.hs map <F3> :GhcModType<CR>
+au Bufenter *.hs map <F4> :GhcModTypeClear<CR>
+au Bufenter *.hs map <F5> :GhcModCheck<CR>
+au Bufenter *.hs map <C-x> :w<CR>:make<CR>
+"au Bufenter *.hs setlocal completefunc=CompleteHaddock
 
 
 " ----------------------
