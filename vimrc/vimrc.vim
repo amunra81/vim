@@ -1,9 +1,6 @@
-"am scris si eu ceva aici 
-"set nu
-
 syntax enable
 colorscheme slate
-cd ~/projects/haskell
+cd $HOME/projects/haskell
 
 au BufRead,BufNewFile *.fs set filetype=fs
 au BufRead,BufNewFile *.fsx set filetype=fs
@@ -13,13 +10,19 @@ au Bufenter *.hs map <C-x> :w<CR>:make<CR>
 "au Bufenter *.hs setlocal completefunc=CompleteHaddock
 au VimEnter *.* setlocal completefunc=CompleteHaddock
 
-
 map <F2> :cd %:p:h<CR>
 map <C-Tab> <C-w><C-w>
-set expandtab
-set tabstop=4
-set shiftwidth=4
 set relativenumber
+
+" tabspaces
+set tabstop=8                   "A tab is 8 spaces
+set expandtab                   "Always uses spaces instead of tabs
+set softtabstop=4               "Insert 4 spaces when tab is pressed
+set shiftwidth=4                "An indent is 4 spaces
+set smarttab                    "Indent instead of tab at start of line
+set shiftround                  "Round spaces to nearest shiftwidth multiple
+set nojoinspaces                "Don't convert spaces to tabs
+
 filetype plugin indent on
 "
 " This is standard pathogen and vim setup
@@ -40,7 +43,6 @@ let vimclojure#HighlightContrib=1
 let vimclojure#DynamicHighlighting=1
 let vimclojure#ParenRainbow=1
 let vimclojure#WantNailgun = 1
-let vimclojure#NailgunClient = $HOME . "/.vim/lib/vimclojure-nailgun-client/ng"
 
 " -----------------
 "   -- HASKELL --
@@ -50,7 +52,8 @@ let g:haddock_browser = "open"
 let g:haddock_browser_callformat = "%s %s"
 " let g:haddock_docdir = "/Library/Haskell/ghc-7.4.2/doc"
 let g:paredit_mode = 1
-" Paredit
+
+
 
 " ----------------------
 "   -- MOVING LINES --
@@ -65,7 +68,7 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 " -------------------
 "   -- NEO COMPL --
 " -------------------
-source ~/.vim/neocomplsettings.vim
+source $HOME/.vim/neocomplsettings.vim
 let g:necoghc_enable_detailed_browse = 1
 
 " disable the arrow keys
