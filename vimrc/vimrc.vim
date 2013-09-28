@@ -1,3 +1,7 @@
+" Load plugins from .vim/bundles using .vim/autoload/pathogen.vim
+set nocompatible
+call pathogen#infect() 
+
 syntax enable
 colorscheme slate
 cd $HOME/projects/haskell
@@ -9,6 +13,7 @@ au VimEnter *.* setlocal completefunc=CompleteHaddock
 map <F2> :cd %:p:h<CR>
 map <C-Tab> <C-w><C-w>
 set relativenumber
+set ruler
 
 " tabspaces
 set tabstop=8                   "A tab is 8 spaces
@@ -23,23 +28,24 @@ filetype plugin indent on
 "
 " This is standard pathogen and vim setup
 "set nocompatible
-call pathogen#infect() 
-"syntax on
-filetype plugin indent on
 
 " ---------------------
 "   -- VIM CLOJURE --
 " ---------------------
+" Let's remember some things, like where the .vim folder is.
 "
-" Here's the vimclojure stuff. You'll need to adjust the NailgunClient
-" setting if you're on windows or have other problems.
-let vimclojure#FuzzyIndent=1
-let vimclojure#HighlightBuiltins=1
-let vimclojure#HighlightContrib=1
-let vimclojure#DynamicHighlighting=1
-let vimclojure#ParenRainbow=1
-let vimclojure#WantNailgun = 1
+nnoremap d{ ldi}vhp
+nnoremap d} hdi}vhp
 
+nnoremap d( ldi)vhp
+nnoremap d) hdi)vhp
+
+nnoremap d[ ldi]vhp
+nnoremap d] hdi]vhp
+
+au Bufenter *.clj nnoremap E :Eval<CR>
+"au Bufenter *.clj nnoremap E :%Eval<CR>
+" K iti arata arata documentatia functie de sub cursor, iar [d codul sursa
 " -----------------
 "   -- HASKELL --
 " -----------------
@@ -51,10 +57,10 @@ let g:paredit_mode = 1
 
 au Bufenter *.hs compiler ghc
 au Bufenter *.hs map <F6> :!ghc --make -o ~/Sites/%:t:r.cgi %<CR>
-au Bufenter *.hs map <F3> :GhcModType<CR>
-au Bufenter *.hs map <F4> :GhcModTypeClear<CR>
-au Bufenter *.hs map <F5> :GhcModCheck<CR>
-au Bufenter *.hs map <C-x> :w<CR>:make<CR>
+au Bufenter *.hs map ,, :GhcModType<CR>
+au Bufenter *.hs map mm :GhcModTypeClear<CR>
+au Bufenter *.hs map <C-x> :w<CR>:GhcModCheck<CR>
+au Bufenter *.hs map <C-z> :w<CR>:make<CR>
 "au Bufenter *.hs setlocal completefunc=CompleteHaddock
 
 

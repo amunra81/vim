@@ -77,7 +77,8 @@ hi Keyword guifg=#50f000 guibg=NONE guisp=NONE gui=NONE ctermfg=82 ctermbg=NONE 
 hi Type guifg=#50f000 guibg=NONE guisp=NONE gui=NONE ctermfg=82 ctermbg=NONE cterm=NONE
 "hi DiffChange -- no settings --
 hi Cursor guifg=#708090 guibg=#f0e68c guisp=#f0e68c gui=NONE ctermfg=60 ctermbg=228 cterm=NONE
-"hi SpellLocal -- no settings --
+"hi Cursor guifg=#ffffff  guibg=#00c896 guisp=#f0be8c gui=NONE ctermfg=60 ctermbg=228 cterm=NONE
+"hi SpellLocal -- no settings -- 
 "hi Error -- no settings --
 hi PMenu guifg=#777777 guibg=#c2bfa5 guisp=#c2bfa5 gui=NONE ctermfg=196 ctermbg=187 cterm=NONE
 hi SpecialKey guifg=#9acd32 guibg=NONE guisp=NONE gui=NONE ctermfg=149 ctermbg=NONE cterm=NONE
