@@ -5,23 +5,43 @@
 "==============================================================================
 
 let s:pairs = [
-	\ ['brown',       'RoyalBlue3'],
-	\ ['cyan',    'SeaGreen3'],
-	\ ['darkgray',    'DarkOrchid3'],
-	\ ['darkgreen',   'firebrick3'],
-	\ ['darkcyan',    'RoyalBlue3'],
-	\ ['darkred',     'SeaGreen3'],
-	\ ['darkmagenta', 'DarkOrchid3'],
-	\ ['brown',       'firebrick3'],
-	\ ['gray',        'RoyalBlue3'],
-	\ ['black',       'SeaGreen3'],
-	\ ['darkmagenta', 'DarkOrchid3'],
-	\ ['cyan',    'firebrick3'],
-	\ ['darkgreen',   'RoyalBlue3'],
-	\ ['darkcyan',    'SeaGreen3'],
-	\ ['darkred',     'DarkOrchid3'],
-	\ ['red',         'firebrick3'],
+	\ ['brown',       'orange1'],
+	\ ['cyan',        'yellow1'],
+	\ ['darkgray',    'greenyellow'],
+	\ ['darkgreen',   'green1'],
+	\ ['darkcyan',    'springgreen1'],
+	\ ['darkred',     'cyan1'],
+	\ ['darkmagenta', 'slateblue1'],
+	\ ['brown',       'springgreen1'],
+	\ ['gray',        'cyan1'],
+	\ ['black',       'green1'],
+	\ ['darkmagenta', 'orangered3'],
+	\ ['cyan',        'yellow3'],
+	\ ['darkgreen',   'greenyellow'],
+	\ ['darkcyan',    'orange1'],
+	\ ['darkred',     'cyan1'],
+	\ ['red',         'yellow1'],
 	\ ]
+	"				\ '1': 'ctermfg=yellow      guifg=orange1',
+	"				\ '2': 'ctermfg=green       guifg=yellow1',
+	"				\ '3': 'ctermfg=cyan        guifg=greenyellow',
+	"				\ '4': 'ctermfg=magenta     guifg=green1',
+	"				\ '5': 'ctermfg=red         guifg=springgreen1',
+	"				\ '6': 'ctermfg=yellow      guifg=cyan1',
+	"				\ '7': 'ctermfg=green       guifg=slateblue1',
+	"				\ '8': 'ctermfg=cyan        guifg=magenta1',
+	"				\ '9': 'ctermfg=magenta     guifg=purple1'
+	"				\ }
+" 					\ '1': 'ctermfg=darkyellow  guifg=orangered3',
+"					\ '2': 'ctermfg=darkgreen   guifg=orange2',
+"					\ '3': 'ctermfg=blue        guifg=yellow3',
+"					\ '4': 'ctermfg=darkmagenta guifg=olivedrab4',
+"					\ '5': 'ctermfg=red         guifg=green4',
+"					\ '6': 'ctermfg=darkyellow  guifg=paleturquoise3',
+"					\ '7': 'ctermfg=darkgreen   guifg=deepskyblue4',
+"					\ '8': 'ctermfg=blue        guifg=darkslateblue',
+"					\ '9': 'ctermfg=darkmagenta guifg=darkviolet'
+					\ }
 let s:pairs = exists('g:rbpt_colorpairs') ? g:rbpt_colorpairs : s:pairs
 let s:max = exists('g:rbpt_max') ? g:rbpt_max : max([len(s:pairs), 16])
 let s:loadtgl = exists('g:rbpt_loadcmd_toggle') ? g:rbpt_loadcmd_toggle : 0
