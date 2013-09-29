@@ -2,6 +2,8 @@
 set nocompatible
 call pathogen#infect() 
 
+let g:NERDTreeDirArrows=0
+
 syntax enable
 colorscheme slate
 cd $HOME/projects/haskell
@@ -77,8 +79,8 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 " -------------------
 "   -- NEO COMPL --
 " -------------------
-source $HOME/.vim/neocomplsettings.vim
-let g:necoghc_enable_detailed_browse = 1
+"source $HOME/.vim/neocomplsettings.vim
+"let g:necoghc_enable_detailed_browse = 1
 
 " disable the arrow keys
 inoremap  <Up>     <NOP>

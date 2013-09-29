@@ -25,3 +25,27 @@
 [submodule "bundle/vim-haskellConceal"]
 	path = bundle/vim-haskellConceal
 	url = https://github.com/Twinside/vim-haskellConceal.git
+[submodule "bundle/vimproc"]
+	path = bundle/vimproc
+	url = https://github.com/Shougo/vimproc.vim.git
+[submodule "bundle/vimshell.vim"]
+	path = bundle/vimshell.vim
+	url = https://github.com/Shougo/vimshell.vim.git
+[submodule "bundle/haskellmode-vim"]
+	path = bundle/haskellmode-vim
+	url = https://github.com/lukerandall/haskellmode-vim.git
+[submodule "bundle/html-template-syntax"]
+	path = bundle/html-template-syntax
+	url = https://github.com/pbrisbin/html-template-syntax.git
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "bundle/vim-haskellFold"]
+	path = bundle/vim-haskellFold
+	url = https://github.com/Twinside/vim-haskellFold.git
+[submodule "bundle/vim-syntax-haskell-cabal"]
+	path = bundle/vim-syntax-haskell-cabal
+	url = https://github.com/Twinside/vim-syntax-haskell-cabal.git
+[submodule "bundle/fsharp-vim"]
+	path = bundle/fsharp-vim
+	url = https://github.com/kongo2002/fsharp-vim.git
