@@ -91,5 +91,5 @@ inoremap  <Right>  <NOP>
 " noremap   <Down>   <NOP>
 " noremap   <Left>   <NOP>
 " noremap   <Right>  <NOP>
-nnoremap ns :NERDTree<cr>
+nnoremap ns :NERDTreeToggle<cr>
 nnoremap cs :NERDTreeClose<cr>
