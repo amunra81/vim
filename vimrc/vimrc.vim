@@ -14,6 +14,8 @@ au VimEnter *.* setlocal completefunc=CompleteHaddock
 
 map <F2> :cd %:p:h<CR>
 map <C-Tab> <C-w><C-w>
+nnoremap <C-s> :w<cr>
+
 set relativenumber
 set ruler
 
@@ -62,6 +64,8 @@ au Bufenter *.hs map <F6> :!ghc --make -o ~/Sites/%:t:r.cgi %<CR>
 au Bufenter *.hs map ,, :GhcModType<CR>
 au Bufenter *.hs map mm :GhcModTypeClear<CR>
 au Bufenter *.hs map <C-x> :w<CR>:GhcModCheck<CR>
+au Bufenter *.hs map <C-z> :w<CR>:make<CR>
+au Bufenter *.hs setlocal concealcursor=vinc
 au Bufenter *.hs map <C-z> :w<CR>:make<CR>
 "au Bufenter *.hs setlocal completefunc=CompleteHaddock
 
