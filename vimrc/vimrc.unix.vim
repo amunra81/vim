@@ -1,4 +1,4 @@
-cd $HOME/projects/haskell
+cd $HOME/projects
 source $HOME/.vim/vimrc/vimrc.vim
 
 " vim clojure
