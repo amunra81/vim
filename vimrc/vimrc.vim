@@ -15,6 +15,7 @@ au VimEnter *.* setlocal completefunc=CompleteHaddock
 map <F2> :cd %:p:h<CR>
 map <C-Tab> <C-w><C-w>
 nnoremap <C-s> :w<cr>
+map <C-F2> :!git add -A && git commit -am "C-F2" && git push origin master<CR>
 
 set relativenumber
 set ruler

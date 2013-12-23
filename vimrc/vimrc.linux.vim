@@ -1,4 +1,2 @@
-source $HOME/.vim/vimrc/vimrc.vim
+source $HOME/.vim/vimrc/vimrc.unix.vim
 
-" vim clojure
-let vimclojure#NailgunClient = $HOME . "/.vim/lib/vimclojure-nailgun-client/ng"
