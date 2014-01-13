@@ -94,4 +94,4 @@ inoremap  <Right>  <NOP>
 " noremap   <Down>   <NOP>
 " noremap   <Left>   <NOP>
 " noremap   <Right>  <NOP>
-nnoremap <A-n> :NERDTreeToggle<cr>
+nnoremap <A-m> :NERDTreeToggle<cr>
