@@ -69,6 +69,11 @@ au Bufenter *.hs map <A-z> :w<CR>:make<CR>
 au Bufenter *.hs setlocal concealcursor=vinc
 "au Bufenter *.hs setlocal completefunc=CompleteHaddock
 
+" -----------------
+"   -- C/C++ --
+" -----------------
+au Bufenter *.c map <A-z> \rc
+au Bufenter *.cpp map <A-z> \rc
 
 " ----------------------
 "   -- MOVING LINES --
