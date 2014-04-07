@@ -96,11 +96,13 @@ inoremap  <Up>     <NOP>
 inoremap  <Down>   <NOP>
 inoremap  <Left>   <NOP>
 inoremap  <Right>  <NOP>
-" noremap   <Up>     <NOP>
-" noremap   <Down>   <NOP>
-" noremap   <Left>   <NOP>
-" noremap   <Right>  <NOP>
+noremap   <Up>     <NOP>
+noremap   <Down>   <NOP>
+noremap   <Left>   <NOP>
+noremap   <Right>  <NOP>
 nnoremap <A-m> :NERDTreeToggle<cr>
+inoremap <esc> <nop>
+inoremap jk <esc>
 
 nnoremap <leader>rc :split $HOME/.vim/vimrc/vimrc.vim<cr>  
 nnoremap <leader>rcu :split $HOME/.vim/vimrc/vimrc.unix.vim<cr>  
@@ -108,9 +110,9 @@ nnoremap <leader>rcl :split $HOME/.vim/vimrc/vimrc.linux.vim<cr>
 nnoremap <leader>rcw :split $HOME/.vim/vimrc/vimrc.win.vim<cr>  
 nnoremap <leader>rco :split $HOME/.vim/vimrc/vimrc.osx.vim<cr>  
 
-nnoremap <leader>grc :split $HOME/.vim/vimrc/vimrc.vim<cr>  
-nnoremap <leader>grcu :split $HOME/.vim/vimrc/vimrc.unix.vim<cr>  
-nnoremap <leader>grcl :split $HOME/.vim/vimrc/vimrc.linux.vim<cr>  
-nnoremap <leader>grcw :split $HOME/.vim/vimrc/vimrc.win.vim<cr>  
-nnoremap <leader>grco :split $HOME/.vim/vimrc/vimrc.osx.vim<cr>  
+nnoremap <leader>grc :split $HOME/.vim/vimrc/gvimrc.vim<cr>  
+nnoremap <leader>grcu :split $HOME/.vim/vimrc/gvimrc.unix.vim<cr>  
+nnoremap <leader>grcl :split $HOME/.vim/vimrc/gvimrc.linux.vim<cr>  
+nnoremap <leader>grcw :split $HOME/.vim/vimrc/gvimrc.win.vim<cr>  
+nnoremap <leader>grco :split $HOME/.vim/vimrc/gvimrc.osx.vim<cr>  
 
