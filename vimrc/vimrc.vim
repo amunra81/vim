@@ -104,6 +104,7 @@ nnoremap <A-m> :NERDTreeToggle<cr>
 inoremap <esc> <nop>
 inoremap jk <esc>
 
+" adding maps for vimrc/gvimrc files
 nnoremap <leader>rc :split $HOME/.vim/vimrc/vimrc.vim<cr>  
 nnoremap <leader>rcu :split $HOME/.vim/vimrc/vimrc.unix.vim<cr>  
 nnoremap <leader>rcl :split $HOME/.vim/vimrc/vimrc.linux.vim<cr>  
