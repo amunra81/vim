@@ -117,3 +117,26 @@ nnoremap <leader>grcl :split $HOME/.vim/vimrc/gvimrc.linux.vim<cr>
 nnoremap <leader>grcw :split $HOME/.vim/vimrc/gvimrc.win.vim<cr>  
 nnoremap <leader>grco :split $HOME/.vim/vimrc/gvimrc.osx.vim<cr>  
 
+" Vimscript file settings ---------------------- {{{
+augroup filetype_vim
+    au!
+    au FileType vim setlocal foldmethod=marker
+augroup END
+" }}}
+
+" Vimscript  ---------------------- {{{
+noremap <F9> :exec 'source '.bufname('%')<cr>
+" }}}
+
+function! LoadCscopeDB()
+    execute "!find . -name '*.c' -o -name '*.h' -o -name '*.cpp' -o -name '*.hpp' > "  getcwd() . "/cscope.files"
+    execute "!cscope -R -b"
+    execute "cscope reset"
+    let a:db=(getcwd()) . '/cscope.out'  
+    echom a:db
+    execute "cscope add " . a:db
+    "let $CSCOPE_DB=(getcwd()) . '/cscope.out'  
+    "echom "Cscope DB generateed at " . $CSCOPE_DB    
+    "return $CSCOPE_DB
+endfunction
+noremap <leader>l :echo LoadCscopeDB()
