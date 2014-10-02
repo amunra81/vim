@@ -1,4 +1,4 @@
 "set nu
-colorscheme ocean
+colorscheme atlantic
 set visualbell
 
