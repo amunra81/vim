@@ -6,7 +6,7 @@ let g:NERDTreeDirArrows=0
 
 syntax enable
 colorscheme slate
-cd $HOME/projects
+"cd $HOME/projects
 
 au BufRead,BufNewFile *.fs set filetype=fs
 au BufRead,BufNewFile *.fsx set filetype=fs
