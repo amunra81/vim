@@ -55,3 +55,15 @@
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = git@github.com:scrooloose/syntastic.git
+[submodule "bundle/nerdtree-git-plugin"]
+	path = bundle/nerdtree-git-plugin
+	url = git@github.com:Xuyuanp/nerdtree-git-plugin.git
+[submodule "bundle/nerdtree-fetch"]
+	path = bundle/nerdtree-fetch
+	url = git@github.com:markgandolfo/nerdtree-fetch.vim.git
+[submodule "bundle/fugitive"]
+	path = bundle/fugitive
+	url = git@github.com:tpope/vim-fugitive.git
+[submodule "bundle/vim2hs"]
+	path = bundle/vim2hs
+	url = git@github.com:dag/vim2hs.git
