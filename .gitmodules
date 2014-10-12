@@ -70,3 +70,12 @@
 [submodule "bundle/haskellConceal"]
 	path = bundle/haskellConceal
 	url = https://github.com/Twinside/vim-haskellConceal.git
+[submodule "bundle/nerdcommenter"]
+	path = bundle/nerdcommenter
+	url = git@github.com:scrooloose/nerdcommenter.git
+[submodule "bundle/fuzzyfinder"]
+	path = bundle/fuzzyfinder
+	url = git@github.com:vim-scripts/FuzzyFinder.git
+[submodule "bundle/L9"]
+	path = bundle/L9
+	url = git@github.com:vim-scripts/L9.git
