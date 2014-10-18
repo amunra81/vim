@@ -1,4 +1,5 @@
 " Load plugins from .vim/bundles using .vim/autoload/pathogen.vim
+
 set nocompatible
 call pathogen#infect() 
 
@@ -118,12 +119,20 @@ nnoremap <leader>grcl :split $HOME/.vim/vimrc/gvimrc.linux.vim<cr>
 nnoremap <leader>grcw :split $HOME/.vim/vimrc/gvimrc.win.vim<cr>  
 nnoremap <leader>grco :split $HOME/.vim/vimrc/gvimrc.osx.vim<cr>  
 
+" new line and enter in the normal mode
+nnoremap <leader>o o<esc>
+nnoremap <leader>O O<esc>
+nnoremap <S-Space> i<space><esc>l
+inoremap <C-x> <esc>lxi
+
+
 " Vimscript file settings ---------------------- {{{
 augroup filetype_vim
     au!
     au FileType vim setlocal foldmethod=marker
 augroup END
 " }}}
+
 
 " Vimscript  ---------------------- {{{
 noremap <F9> :exec 'source '.bufname('%')<cr>
@@ -141,3 +150,7 @@ function! LoadCscopeDB()
     "return $CSCOPE_DB
 endfunction
 noremap <leader>l :echo LoadCscopeDB()
+
+"let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_detect_whitespace=0

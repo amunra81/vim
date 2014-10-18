@@ -9,3 +9,5 @@ au Bufenter *.hs map Ω :w<CR>:make<CR>
 
 au Bufenter *.c map Ω \rc
 au Bufenter *.cpp map Ω \rc
+
+

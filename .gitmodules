@@ -79,3 +79,12 @@
 [submodule "bundle/L9"]
 	path = bundle/L9
 	url = git@github.com:vim-scripts/L9.git
+[submodule "bundle/jdaddy"]
+	path = bundle/jdaddy
+	url = https://github.com/tpope/vim-jdaddy.git
+[submodule "bundle/vim-airline"]
+	path = bundle/vim-airline
+	url = https://github.com/bling/vim-airline
+[submodule "bundle/gitgutter"]
+	path = bundle/gitgutter
+	url = git@github.com:airblade/vim-gitgutter.git
