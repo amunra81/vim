@@ -1,51 +1,51 @@
 [submodule "bundle/vim-niji"]
 	path = bundle/vim-niji
-	url = https://github.com/amdt/vim-niji.git
+	url = git@github.com:amdt/vim-niji.git
 [submodule "bundle/vim-clojure-static"]
 	path = bundle/vim-clojure-static
-	url = https://github.com/guns/vim-clojure-static.git
+	url = git@github.com:guns/vim-clojure-static.git
 [submodule "bundle/vim-surround"]
 	path = bundle/vim-surround
-	url = https://github.com/tpope/vim-surround.git
+	url = git@github.com:tpope/vim-surround.git
 [submodule "bundle/paraedit.vim"]
 	path = bundle/paraedit.vim
-	url = https://github.com/vim-scripts/paredit.vim.git
+	url = git@github.com:vim-scripts/paredit.vim.git
 [submodule "bundle/screen"]
 	path = bundle/screen
-	url = https://github.com/ervandew/screen.git
+	url = git@github.com:ervandew/screen.git
 [submodule "bundle/vim-classpath"]
 	path = bundle/vim-classpath
-	url = https://github.com/tpope/vim-classpath.git
+	url = git@github.com:tpope/vim-classpath.git
 [submodule "bundle/vim-fireplace"]
 	path = bundle/vim-fireplace
-	url = https://github.com/tpope/vim-fireplace.git
+	url = git@github.com:tpope/vim-fireplace.git
 [submodule "bundle/ghc-mod"]
 	path = bundle/ghc-mod
-	url = https://github.com/eagletmt/ghcmod-vim.git
+	url = git@github.com:eagletmt/ghcmod-vim.git
 [submodule "bundle/vim-haskellConceal"]
 	path = bundle/vim-haskellConceal
-	url = https://github.com/Twinside/vim-haskellConceal.git
+	url = git@github.com:Twinside/vim-haskellConceal.git
 [submodule "bundle/vimproc"]
 	path = bundle/vimproc
-	url = https://github.com/Shougo/vimproc.vim.git
+	url = git@github.com:Shougo/vimproc.vim.git
 [submodule "bundle/vimshell.vim"]
 	path = bundle/vimshell.vim
-	url = https://github.com/Shougo/vimshell.vim.git
+	url = git@github.com:Shougo/vimshell.vim.git
 [submodule "bundle/haskellmode-vim"]
 	path = bundle/haskellmode-vim
-	url = https://github.com/lukerandall/haskellmode-vim.git
+	url = git@github.com:lukerandall/haskellmode-vim.git
 [submodule "bundle/html-template-syntax"]
 	path = bundle/html-template-syntax
-	url = https://github.com/pbrisbin/html-template-syntax.git
+	url = git@github.com:pbrisbin/html-template-syntax.git
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
+	url = git@github.com:scrooloose/nerdtree.git
 [submodule "bundle/vim-haskellFold"]
 	path = bundle/vim-haskellFold
-	url = https://github.com/Twinside/vim-haskellFold.git
+	url = git@github.com:Twinside/vim-haskellFold.git
 [submodule "bundle/vim-syntax-haskell-cabal"]
 	path = bundle/vim-syntax-haskell-cabal
-	url = https://github.com/Twinside/vim-syntax-haskell-cabal.git
+	url = git@github.com:Twinside/vim-syntax-haskell-cabal.git
 [submodule "bundle/solarized"]
 	path = bundle/solarized
 	url = git@github.com:altercation/vim-colors-solarized.git
@@ -66,7 +66,7 @@
 	url = git@github.com:dag/vim2hs.git
 [submodule "bundle/haskellConceal"]
 	path = bundle/haskellConceal
-	url = https://github.com/Twinside/vim-haskellConceal.git
+	url = git@github.com:Twinside/vim-haskellConceal.git
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
 	url = git@github.com:scrooloose/nerdcommenter.git
@@ -78,10 +78,10 @@
 	url = git@github.com:vim-scripts/L9.git
 [submodule "bundle/jdaddy"]
 	path = bundle/jdaddy
-	url = https://github.com/tpope/vim-jdaddy.git
+	url = git@github.com:tpope/vim-jdaddy.git
 [submodule "bundle/vim-airline"]
 	path = bundle/vim-airline
-	url = https://github.com/bling/vim-airline
+	url = git@github.com:bling/vim-airline
 [submodule "bundle/gitgutter"]
 	path = bundle/gitgutter
 	url = git@github.com:airblade/vim-gitgutter.git
