@@ -88,3 +88,9 @@
 [submodule "bundle/promtline"]
 	path = bundle/promtline
 	url = git@github.com:edkolev/promptline.vim.git
+[submodule "bundle/powerline-fonts"]
+	path = bundle/powerline-fonts
+	url = git@github.com:Lokaltog/powerline-fonts.git
+[submodule "fonts/powerline-fonts"]
+	path = fonts/powerline-fonts
+	url = git@github.com:Lokaltog/powerline-fonts.git

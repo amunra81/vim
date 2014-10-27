@@ -5,3 +5,5 @@
 autoload/neocomplcache/.DS_Store
 
 doc/tags
+
+haskellmode.config
