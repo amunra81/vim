@@ -21,7 +21,7 @@
 	url = https://github.com/tpope/vim-fireplace.git
 [submodule "bundle/ghc-mod"]
 	path = bundle/ghc-mod
-	url = https://github.com/eagletmt/ghcmod-vim.git
+	url = git@github.com:eagletmt/ghcmod-vim.git
 [submodule "bundle/vim-haskellConceal"]
 	path = bundle/vim-haskellConceal
 	url = https://github.com/Twinside/vim-haskellConceal.git
