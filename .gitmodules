@@ -46,9 +46,6 @@
 [submodule "bundle/vim-syntax-haskell-cabal"]
 	path = bundle/vim-syntax-haskell-cabal
 	url = https://github.com/Twinside/vim-syntax-haskell-cabal.git
-[submodule "bundle/fsharp-vim"]
-	path = bundle/fsharp-vim
-	url = https://github.com/kongo2002/fsharp-vim.git
 [submodule "bundle/solarized"]
 	path = bundle/solarized
 	url = git@github.com:altercation/vim-colors-solarized.git
@@ -88,3 +85,6 @@
 [submodule "bundle/gitgutter"]
 	path = bundle/gitgutter
 	url = git@github.com:airblade/vim-gitgutter.git
+[submodule "bundle/promtline"]
+	path = bundle/promtline
+	url = git@github.com:edkolev/promptline.vim.git
