@@ -94,3 +94,9 @@
 [submodule "fonts/powerline-fonts"]
 	path = fonts/powerline-fonts
 	url = git@github.com:Lokaltog/powerline-fonts.git
+[submodule "bundle/csv"]
+	path = bundle/csv
+	url = git@github.com:chrisbra/csv.vim.git
+[submodule "bundle/taglist"]
+	path = bundle/taglist
+	url = git@github.com:vim-scripts/taglist.vim.git
