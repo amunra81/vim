@@ -11,7 +11,8 @@ colorscheme slate
 
 au BufRead,BufNewFile *.fs set filetype=fs
 au BufRead,BufNewFile *.fsx set filetype=fs
-au VimEnter *.* setlocal completefunc=CompleteHaddock
+au BufRead,BufNewFile *.cljc set filetype=clojure
+au VimEnter *.hs setlocal completefunc=CompleteHaddock
 
 map <F2> :cd %:p:h<CR>
 map ç :HLint<CR>
@@ -107,6 +108,7 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 nnoremap <A-m> :NERDTreeToggle<cr>
 inoremap <esc> <nop>
 inoremap jk <esc>
+inoremap jk <esc>
 
 " adding maps for vimrc/gvimrc files
 nnoremap <leader>rc :split $HOME/.vim/vimrc/vimrc.vim<cr>  
@@ -160,4 +162,11 @@ let g:airline_detect_whitespace=0
 
 
 let g:airline_theme='solarized'
+let g:ycm_semantic_triggers = {'haskell' : ['.']}
+let g:necoghc_enable_detailed_browse = 1
 
+let $PATH = $PATH . ':' . expand("/Users/horus/Library/Haskell/ghc-7.8.3/lib")
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*

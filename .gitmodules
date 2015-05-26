@@ -103,3 +103,30 @@
 [submodule "bundle/image.vim"]
 	path = bundle/image.vim
 	url = git@github.com:ashisha/image.vim.git
+[submodule "bundle/neco-ghc"]
+	path = bundle/neco-ghc
+	url = git@github.com:eagletmt/neco-ghc.git
+[submodule "bundle/YouCompleteMe"]
+	path = bundle/YouCompleteMe
+	url = git@github.com:Valloric/YouCompleteMe.git
+[submodule "bundle/sql-complete"]
+	path = bundle/sql-complete
+	url = git@github.com:vim-scripts/SQLComplete.vim.git
+[submodule "bundle/dbext"]
+	path = bundle/dbext
+	url = git@github.com:vim-scripts/dbext.vim.git
+[submodule "bundle/vim-clojure-highlight"]
+	path = bundle/vim-clojure-highlight
+	url = git@github.com:guns/vim-clojure-highlight.git
+[submodule "bundle/vim-leiningen"]
+	path = bundle/vim-leiningen
+	url = git://github.com/tpope/vim-leiningen.git
+[submodule "bundle/sensible"]
+	path = bundle/sensible
+	url = https://github.com/tpope/vim-sensible.git
+[submodule "bundle/projectionist"]
+	path = bundle/projectionist
+	url = git://github.com/tpope/vim-projectionist.git
+[submodule "bundle/dispatch"]
+	path = bundle/dispatch
+	url = git://github.com/tpope/vim-dispatch.git
