@@ -1,7 +1,12 @@
 " Load plugins from .vim/bundles using .vim/autoload/pathogen.vim
+call plug#begin('~/.vim/plugged')
+ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+ Plug 'eparreno/vim-l9'
+ Plug 'Valloric/YouCompleteMe'
+
+call plug#end()
 
 set nocompatible
-call pathogen#infect() 
 
 let g:NERDTreeDirArrows=0
 
@@ -36,9 +41,6 @@ set nojoinspaces                "Don't convert spaces to tabs
 
 filetype plugin indent on
 "
-" This is standard pathogen and vim setup
-"set nocompatible
-
 " ---------------------
 "   -- VIM CLOJURE --
 " ---------------------
