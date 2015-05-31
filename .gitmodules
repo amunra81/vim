@@ -1,129 +1,12 @@
-[submodule "bundle/vim-niji"]
-	path = bundle/vim-niji
-	url = git@github.com:amdt/vim-niji.git
-[submodule "bundle/vim-clojure-static"]
-	path = bundle/vim-clojure-static
-	url = git@github.com:guns/vim-clojure-static.git
-[submodule "bundle/vim-surround"]
-	path = bundle/vim-surround
-	url = git@github.com:tpope/vim-surround.git
-[submodule "bundle/paraedit.vim"]
-	path = bundle/paraedit.vim
-	url = git@github.com:vim-scripts/paredit.vim.git
-[submodule "bundle/screen"]
-	path = bundle/screen
-	url = git@github.com:ervandew/screen.git
-[submodule "bundle/vim-classpath"]
-	path = bundle/vim-classpath
-	url = git@github.com:tpope/vim-classpath.git
-[submodule "bundle/vim-fireplace"]
-	path = bundle/vim-fireplace
-	url = git@github.com:tpope/vim-fireplace.git
-[submodule "bundle/ghc-mod"]
-	path = bundle/ghc-mod
-	url = git@github.com:eagletmt/ghcmod-vim.git
 [submodule "bundle/vim-haskellConceal"]
 	path = bundle/vim-haskellConceal
 	url = git@github.com:Twinside/vim-haskellConceal.git
-[submodule "bundle/vimproc"]
-	path = bundle/vimproc
-	url = git@github.com:Shougo/vimproc.vim.git
-[submodule "bundle/vimshell.vim"]
-	path = bundle/vimshell.vim
-	url = git@github.com:Shougo/vimshell.vim.git
-[submodule "bundle/haskellmode-vim"]
-	path = bundle/haskellmode-vim
-	url = git@github.com:lukerandall/haskellmode-vim.git
-[submodule "bundle/html-template-syntax"]
-	path = bundle/html-template-syntax
-	url = git@github.com:pbrisbin/html-template-syntax.git
-[submodule "bundle/nerdtree"]
-	path = bundle/nerdtree
-	url = git@github.com:scrooloose/nerdtree.git
-[submodule "bundle/vim-haskellFold"]
-	path = bundle/vim-haskellFold
-	url = git@github.com:Twinside/vim-haskellFold.git
-[submodule "bundle/vim-syntax-haskell-cabal"]
-	path = bundle/vim-syntax-haskell-cabal
-	url = git@github.com:Twinside/vim-syntax-haskell-cabal.git
 [submodule "bundle/solarized"]
 	path = bundle/solarized
 	url = git@github.com:altercation/vim-colors-solarized.git
-[submodule "bundle/syntastic"]
-	path = bundle/syntastic
-	url = git@github.com:scrooloose/syntastic.git
-[submodule "bundle/nerdtree-git-plugin"]
-	path = bundle/nerdtree-git-plugin
-	url = git@github.com:Xuyuanp/nerdtree-git-plugin.git
-[submodule "bundle/nerdtree-fetch"]
-	path = bundle/nerdtree-fetch
-	url = git@github.com:markgandolfo/nerdtree-fetch.vim.git
-[submodule "bundle/fugitive"]
-	path = bundle/fugitive
-	url = git@github.com:tpope/vim-fugitive.git
-[submodule "bundle/vim2hs"]
-	path = bundle/vim2hs
-	url = git@github.com:dag/vim2hs.git
-[submodule "bundle/haskellConceal"]
-	path = bundle/haskellConceal
-	url = git@github.com:Twinside/vim-haskellConceal.git
-[submodule "bundle/nerdcommenter"]
-	path = bundle/nerdcommenter
-	url = git@github.com:scrooloose/nerdcommenter.git
-[submodule "bundle/fuzzyfinder"]
-	path = bundle/fuzzyfinder
-	url = git@github.com:vim-scripts/FuzzyFinder.git
-[submodule "bundle/jdaddy"]
-	path = bundle/jdaddy
-	url = git@github.com:tpope/vim-jdaddy.git
-[submodule "bundle/vim-airline"]
-	path = bundle/vim-airline
-	url = git@github.com:bling/vim-airline
-[submodule "bundle/gitgutter"]
-	path = bundle/gitgutter
-	url = git@github.com:airblade/vim-gitgutter.git
-[submodule "bundle/promtline"]
-	path = bundle/promtline
-	url = git@github.com:edkolev/promptline.vim.git
 [submodule "bundle/powerline-fonts"]
 	path = bundle/powerline-fonts
 	url = git@github.com:Lokaltog/powerline-fonts.git
 [submodule "fonts/powerline-fonts"]
 	path = fonts/powerline-fonts
 	url = git@github.com:Lokaltog/powerline-fonts.git
-[submodule "bundle/csv"]
-	path = bundle/csv
-	url = git@github.com:chrisbra/csv.vim.git
-[submodule "bundle/taglist"]
-	path = bundle/taglist
-	url = git@github.com:vim-scripts/taglist.vim.git
-[submodule "bundle/image.vim"]
-	path = bundle/image.vim
-	url = git@github.com:ashisha/image.vim.git
-[submodule "bundle/neco-ghc"]
-	path = bundle/neco-ghc
-	url = git@github.com:eagletmt/neco-ghc.git
-[submodule "bundle/YouCompleteMe"]
-	path = bundle/YouCompleteMe
-	url = git@github.com:Valloric/YouCompleteMe.git
-[submodule "bundle/sql-complete"]
-	path = bundle/sql-complete
-	url = git@github.com:vim-scripts/SQLComplete.vim.git
-[submodule "bundle/dbext"]
-	path = bundle/dbext
-	url = git@github.com:vim-scripts/dbext.vim.git
-[submodule "bundle/vim-clojure-highlight"]
-	path = bundle/vim-clojure-highlight
-	url = git@github.com:guns/vim-clojure-highlight.git
-[submodule "bundle/vim-leiningen"]
-	path = bundle/vim-leiningen
-	url = git://github.com/tpope/vim-leiningen.git
-[submodule "bundle/sensible"]
-	path = bundle/sensible
-	url = https://github.com/tpope/vim-sensible.git
-[submodule "bundle/projectionist"]
-	path = bundle/projectionist
-	url = git://github.com/tpope/vim-projectionist.git
-[submodule "bundle/dispatch"]
-	path = bundle/dispatch
-	url = git://github.com/tpope/vim-dispatch.git
