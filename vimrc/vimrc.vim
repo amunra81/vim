@@ -1,8 +1,44 @@
 " Load plugins from .vim/bundles using .vim/autoload/pathogen.vim
 call plug#begin('~/.vim/plugged')
- Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
  Plug 'eparreno/vim-l9'
  Plug 'Valloric/YouCompleteMe'
+ Plug 'chrisbra/csv.vim'
+ Plug 'vim-scripts/dbext.vim'
+ Plug 'tpope/vim-dispatch'
+ Plug 'tpope/vim-fugitive'
+ Plug 'vim-scripts/FuzzyFinder'
+ Plug 'eagletmt/ghcmod-vim'
+ Plug 'airblade/vim-gitgutter'
+ Plug 'enomsg/vim-haskellConcealPlus'
+ Plug 'lukerandall/haskellmode-vim'
+ Plug 'tpope/vim-jdaddy'
+ Plug 'eagletmt/neco-ghc'
+ Plug 'scrooloose/nerdcommenter'
+ Plug 'scrooloose/nerdtree'
+ Plug 'Xuyuanp/nerdtree-git-plugin'
+ Plug 'vim-scripts/paredit.vim'
+ Plug 'tpope/vim-projectionist'
+ Plug 'edkolev/promptline.vim'
+ Plug 'ervandew/screen'
+ Plug 'tpope/vim-sensible'
+ Plug 'vim-scripts/SQLComplete.vim'
+ Plug 'scrooloose/syntastic'
+ Plug 'vim-scripts/taglist.vim'
+ Plug 'bling/vim-airline'
+ Plug 'tpope/vim-classpath'
+ Plug 'guns/vim-clojure-highlight'
+ Plug 'guns/vim-clojure-static'
+ Plug 'tpope/vim-fireplace'
+ Plug 'Twinside/vim-haskellFold'
+ Plug 'tpope/vim-leiningen'
+ Plug 'vim-scripts/vim-niji'
+ Plug 'tpope/vim-surround'
+ Plug 'Twinside/vim-syntax-haskell-cabal'
+ Plug 'dag/vim2hs'
+ Plug 'Shougo/vimproc.vim'
+ Plug 'Shougo/vimshell.vim'
+ Plug 'vim-scripts/bufexplorer.zip'
+ Plug 'pbrisbin/vim-syntax-shakespeare'
 
 call plug#end()
 
@@ -75,7 +111,7 @@ au Bufenter *.hs map <A-x> :w<CR>:GhcModCheck<CR>
 au Bufenter *.hs map <A-z> :w<CR>:make<CR>
 au Bufenter *.hs setlocal concealcursor=vinc
 "au Bufenter *.hs setlocal completefunc=CompleteHaddock
-
+let hscoptions="Ahfc𝔻𝐌 𝐒𝐓𝐄"
 " -----------------
 "   -- C/C++ --
 " -----------------
@@ -85,12 +121,12 @@ au Bufenter *.cpp map <A-z> \rc
 " ----------------------
 "   -- MOVING LINES --
 " ----------------------
-nnoremap <C-j> :m .+1<CR>==
-nnoremap <C-k> :m .-2<CR>==
-inoremap <C-j> <Esc>:m .+1<CR>==gi
-inoremap <C-k> <Esc>:m .-2<CR>==gi
-vnoremap <C-j> :m '>+1<CR>gv=gv
-vnoremap <C-k> :m '<-2<CR>gv=gv
+"nnoremap <C-j> :m .+1<CR>==
+"nnoremap <C-k> :m .-2<CR>==
+"inoremap <C-j> <Esc>:m .+1<CR>==gi
+"inoremap <C-k> <Esc>:m .-2<CR>==gi
+"vnoremap <C-j> :m '>+1<CR>gv=gv
+"vnoremap <C-k> :m '<-2<CR>gv=gv
 
 " -------------------
 "   -- NEO COMPL --
