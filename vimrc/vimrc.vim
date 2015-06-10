@@ -9,7 +9,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'vim-scripts/FuzzyFinder'
  Plug 'eagletmt/ghcmod-vim'
  Plug 'airblade/vim-gitgutter'
- Plug 'enomsg/vim-haskellConcealPlus'
+ Plug 'Twinside/vim-haskellConceal'
  Plug 'lukerandall/haskellmode-vim'
  Plug 'tpope/vim-jdaddy'
  Plug 'eagletmt/neco-ghc'
@@ -44,7 +44,7 @@ call plug#end()
 
 set nocompatible
 
-let g:NERDTreeDirArrows=0
+"let g:NERDTreeDirArrows=0
 
 syntax enable
 colorscheme slate
