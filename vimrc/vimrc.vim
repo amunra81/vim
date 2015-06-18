@@ -9,7 +9,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'vim-scripts/FuzzyFinder'
  Plug 'eagletmt/ghcmod-vim'
  Plug 'airblade/vim-gitgutter'
- Plug 'Twinside/vim-haskellConceal'
+ " Plug 'Twinside/vim-haskellConceal'
  Plug 'lukerandall/haskellmode-vim'
  Plug 'tpope/vim-jdaddy'
  Plug 'eagletmt/neco-ghc'
@@ -109,9 +109,7 @@ au Bufenter *.hs nnoremap <A-.> :GhcModType<CR>
 au Bufenter *.hs nnoremap <A-,> :GhcModTypeClear<CR>
 au Bufenter *.hs map <A-x> :w<CR>:GhcModCheck<CR>
 au Bufenter *.hs map <A-z> :w<CR>:make<CR>
-au Bufenter *.hs setlocal concealcursor=vinc
 "au Bufenter *.hs setlocal completefunc=CompleteHaddock
-let hscoptions="Ahfc𝔻𝐌 𝐒𝐓𝐄"
 " -----------------
 "   -- C/C++ --
 " -----------------
