@@ -39,7 +39,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'Shougo/vimshell.vim'
  Plug 'vim-scripts/bufexplorer.zip'
  Plug 'pbrisbin/vim-syntax-shakespeare'
-
+ Plug 'diepm/vim-rest-console'
 call plug#end()
 
 set nocompatible
@@ -100,7 +100,7 @@ au Bufenter *.clj nnoremap E :Eval<CR>
 " Configure browser for haskell_doc.vim
 let g:haddock_browser = "open"
 let g:haddock_browser_callformat = "%s %s"
-"let g:haddock_docdir = "/Users/horus/Library/Haskell/doc"
+let g:haddock_docdir = "/Users/horus/Library/Haskell/Current/share/"
 let g:paredit_mode = 1
 
 au Bufenter *.hs compiler ghc
@@ -181,6 +181,6 @@ noremap <F9> :exec 'source '.bufname('%')<cr>
 let g:airline_powerline_fonts = 1
 "let g:airline_detect_whitespace=0
 let g:airline#extensions#whitespace#enabled = 0
-
+let g:haskell_conceal              = 0
 let g:ycm_semantic_triggers = {'haskell' : ['.']}
 let g:necoghc_enable_detailed_browse = 1
