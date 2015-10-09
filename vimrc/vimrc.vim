@@ -1,5 +1,6 @@
 " Load plugins from .vim/bundles using .vim/autoload/pathogen.vim
 call plug#begin('~/.vim/plugged')
+ Plug 'mxw/vim-jsx'
  Plug 'eparreno/vim-l9'
  Plug 'Valloric/YouCompleteMe'
  Plug 'chrisbra/csv.vim'
@@ -9,8 +10,8 @@ call plug#begin('~/.vim/plugged')
  Plug 'vim-scripts/FuzzyFinder'
  Plug 'eagletmt/ghcmod-vim'
  Plug 'airblade/vim-gitgutter'
- " Plug 'Twinside/vim-haskellConceal'
- Plug 'lukerandall/haskellmode-vim'
+ "Plug 'Twinside/vim-haskellConceal'
+ "Plug 'lukerandall/haskellmode-vim'
  Plug 'tpope/vim-jdaddy'
  Plug 'eagletmt/neco-ghc'
  Plug 'scrooloose/nerdcommenter'
@@ -92,29 +93,35 @@ nnoremap d[ ldi]vhp
 nnoremap d] hdi]vhp
 
 au Bufenter *.clj nnoremap E :Eval<CR>
-"au Bufenter *.clj nnoremap E :%Eval<CR>
+au Bufenter *.cljc nnoremap E :Eval<CR>
 " K iti arata arata documentatia functie de sub cursor, iar [d codul sursa
 " -----------------
 "   -- HASKELL --
 " -----------------
 " Configure browser for haskell_doc.vim
-let g:haddock_browser = "open"
-let g:haddock_browser_callformat = "%s %s"
-let g:haddock_docdir = "/Users/horus/Library/Haskell/Current/share/"
-let g:paredit_mode = 1
+"let g:haddock_browser = "open"
+"let g:haddock_browser_callformat = "%s %s"
+"let g:haddock_docdir = "/Users/horus/Library/Haskell/Current/share/"
+"let g:paredit_mode = 1
 
-au Bufenter *.hs compiler ghc
-au Bufenter *.hs map <F6> :!ghc --make -o ~/Sites/%:t:r.cgi %<CR>
+"au Bufenter *.hs compiler ghc
+"au Bufenter *.hs map <F6> :!ghc --make -o ~/Sites/%:t:r.cgi %<CR>
 au Bufenter *.hs nnoremap <A-.> :GhcModType<CR>
 au Bufenter *.hs nnoremap <A-,> :GhcModTypeClear<CR>
 au Bufenter *.hs map <A-x> :w<CR>:GhcModCheck<CR>
 au Bufenter *.hs map <A-z> :w<CR>:make<CR>
 "au Bufenter *.hs setlocal completefunc=CompleteHaddock
+ 
+" CONFIGURATION for neco-ghc
+" Disable haskell-vim omnifunc
+let g:haskellmode_completion_ghc = 0
+autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+
 " -----------------
 "   -- C/C++ --
 " -----------------
-au Bufenter *.c map <A-z> \rc
-au Bufenter *.cpp map <A-z> \rc
+"au Bufenter *.c map <A-z> \rc
+"au Bufenter *.cpp map <A-z> \rc
 
 " ----------------------
 "   -- MOVING LINES --
@@ -142,8 +149,7 @@ au Bufenter *.cpp map <A-z> \rc
 "noremap   <Left>   <NOP>
 "noremap   <Right>  <NOP>
 nnoremap <A-m> :NERDTreeToggle<cr>
-inoremap <esc> <nop>
-inoremap jk <esc>
+"inoremap <esc> <nop>
 inoremap jk <esc>
 
 " adding maps for vimrc/gvimrc files
@@ -182,5 +188,6 @@ let g:airline_powerline_fonts = 1
 "let g:airline_detect_whitespace=0
 let g:airline#extensions#whitespace#enabled = 0
 let g:haskell_conceal              = 0
-let g:ycm_semantic_triggers = {'haskell' : ['.']}
 let g:necoghc_enable_detailed_browse = 1
+let g:jsx_ext_required = 0
+let g:ycm_semantic_triggers = {'haskell' : ['.']}
