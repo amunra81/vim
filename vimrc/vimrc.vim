@@ -1,5 +1,6 @@
 " Load plugins from .vim/bundles using .vim/autoload/pathogen.vim
 call plug#begin('~/.vim/plugged')
+ Plug 'pangloss/vim-javascript'
  Plug 'mxw/vim-jsx'
  Plug 'eparreno/vim-l9'
  Plug 'Valloric/YouCompleteMe'
@@ -41,6 +42,8 @@ call plug#begin('~/.vim/plugged')
  Plug 'vim-scripts/bufexplorer.zip'
  Plug 'pbrisbin/vim-syntax-shakespeare'
  Plug 'diepm/vim-rest-console'
+ Plug 'Twinside/vim-hoogle'
+ Plug 'majutsushi/tagbar'
 call plug#end()
 
 set nocompatible
@@ -108,8 +111,8 @@ au Bufenter *.cljc nnoremap E :Eval<CR>
 "au Bufenter *.hs map <F6> :!ghc --make -o ~/Sites/%:t:r.cgi %<CR>
 au Bufenter *.hs nnoremap <A-.> :GhcModType<CR>
 au Bufenter *.hs nnoremap <A-,> :GhcModTypeClear<CR>
-au Bufenter *.hs map <A-x> :w<CR>:GhcModCheck<CR>
-au Bufenter *.hs map <A-z> :w<CR>:make<CR>
+au Bufenter *.hs nnoremap <A-x> :w<CR>:GhcModCheck<CR>
+au Bufenter *.hs nnoremap <A-z> :w<CR>:make<CR>
 "au Bufenter *.hs setlocal completefunc=CompleteHaddock
  
 " CONFIGURATION for neco-ghc
@@ -126,12 +129,14 @@ autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 " ----------------------
 "   -- MOVING LINES --
 " ----------------------
-"nnoremap <C-j> :m .+1<CR>==
-"nnoremap <C-k> :m .-2<CR>==
-"inoremap <C-j> <Esc>:m .+1<CR>==gi
-"inoremap <C-k> <Esc>:m .-2<CR>==gi
-"vnoremap <C-j> :m '>+1<CR>gv=gv
-"vnoremap <C-k> :m '<-2<CR>gv=gv
+nnoremap ˚ :m .-2<CR>==
+nnoremap ∆ :m .+1<CR>==
+
+inoremap ˚ <Esc>:m .-2<CR>==gi
+inoremap ∆ <Esc>:m .+1<CR>==gi
+
+vnoremap ˚ :m '<-2<CR>gv=gv
+vnoremap ∆ :m '>+1<CR>gv=gv
 
 " -------------------
 "   -- NEO COMPL --
@@ -148,7 +153,12 @@ autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 "noremap   <Down>   <NOP>
 "noremap   <Left>   <NOP>
 "noremap   <Right>  <NOP>
-nnoremap <A-m> :NERDTreeToggle<cr>
+nnoremap ,m :NERDTreeToggle<cr>
+nnoremap ,n :NERDTreeFind<cr>
+
+"nnoremap ∆ ddp
+"nnoremap ˚ ddkkp
+
 "inoremap <esc> <nop>
 inoremap jk <esc>
 
@@ -168,9 +178,20 @@ nnoremap <leader>grco :split $HOME/.vim/vimrc/gvimrc.osx.vim<cr>
 " new line and enter in the normal mode
 nnoremap <leader>o o<esc>
 nnoremap <leader>O O<esc>
+nnoremap <S-CR> O<esc>
+nnoremap <A-CR> o<esc>
+
+
 nnoremap <S-Space> i<space><esc>l
 nnoremap <S-Tab> i<tab><esc>l
 inoremap <C-x> <esc>lxi
+
+" Vimscript file settings ---------------------- {{{
+augroup maps
+    au!
+    nnoremap <leader>/ :/\c
+augroup END
+" }}}
 
 " Vimscript file settings ---------------------- {{{
 augroup filetype_vim
@@ -187,6 +208,7 @@ noremap <F9> :exec 'source '.bufname('%')<cr>
 let g:airline_powerline_fonts = 1
 "let g:airline_detect_whitespace=0
 let g:airline#extensions#whitespace#enabled = 0
+
 let g:haskell_conceal              = 0
 let g:necoghc_enable_detailed_browse = 1
 let g:jsx_ext_required = 0
