@@ -1,7 +1,19 @@
 " Load plugins from .vim/bundles using .vim/autoload/pathogen.vim
+set t_Co=256
 call plug#begin('~/.vim/plugged')
+ " javascript
  Plug 'pangloss/vim-javascript'
+ Plug 'nathanaelkane/vim-indent-guides'
+ Plug 'jelera/vim-javascript-syntax'
+ Plug 'Raimondi/delimitMate'
+ Plug 'marijnh/tern_for_vim'
  Plug 'mxw/vim-jsx'
+ Plug 'helino/vim-json'
+ 
+ " Ag shearch
+ Plug 'rking/ag.vim'
+ Plug 'Chun-Yang/vim-action-ag'
+
  Plug 'eparreno/vim-l9'
  Plug 'Valloric/YouCompleteMe'
  Plug 'chrisbra/csv.vim'
@@ -27,6 +39,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'scrooloose/syntastic'
  Plug 'vim-scripts/taglist.vim'
  Plug 'bling/vim-airline'
+ Plug 'vim-airline/vim-airline-themes'
  Plug 'tpope/vim-classpath'
  Plug 'guns/vim-clojure-highlight'
  Plug 'guns/vim-clojure-static'
@@ -44,6 +57,14 @@ call plug#begin('~/.vim/plugged')
  Plug 'diepm/vim-rest-console'
  Plug 'Twinside/vim-hoogle'
  Plug 'majutsushi/tagbar'
+ "COLORS
+ Plug 'zefei/cake16'
+ Plug 'flazz/vim-colorschemes'
+ Plug 'sjl/gundo.vim'
+ Plug 'kien/ctrlp.vim'
+ Plug 'tpope/vim-vinegar'
+ Plug 'junegunn/vim-easy-align'
+ " shortcut gaip=
 call plug#end()
 
 set nocompatible
@@ -51,7 +72,7 @@ set nocompatible
 "let g:NERDTreeDirArrows=0
 
 syntax enable
-colorscheme slate
+colorscheme apprentice
 "cd $HOME/projects
 
 au BufRead,BufNewFile *.fs set filetype=fs
@@ -64,6 +85,7 @@ map ç :HLint<CR>
 map <C-Tab> <C-w><C-w>
 nnoremap <C-s> :w<cr>
 map <C-F2> :!git add -A && git commit -am "C-F2" && git push origin master<CR>
+map <C-F3> :!git add -A && git commit -am "C-F2"<CR>
 set hlsearch
 noremap ÷ :let @/ = ""<cr>
 
@@ -114,6 +136,7 @@ au Bufenter *.hs nnoremap <A-,> :GhcModTypeClear<CR>
 au Bufenter *.hs nnoremap <A-x> :w<CR>:GhcModCheck<CR>
 au Bufenter *.hs nnoremap <A-z> :w<CR>:make<CR>
 "au Bufenter *.hs setlocal completefunc=CompleteHaddock
+
  
 " CONFIGURATION for neco-ghc
 " Disable haskell-vim omnifunc
@@ -160,7 +183,8 @@ nnoremap ,n :NERDTreeFind<cr>
 "nnoremap ˚ ddkkp
 
 "inoremap <esc> <nop>
-inoremap jk <esc>
+inoremap jk <Esc>
+inoremap jj <Esc>
 
 " adding maps for vimrc/gvimrc files
 nnoremap <leader>rc :split $HOME/.vim/vimrc/vimrc.vim<cr>  
@@ -211,5 +235,29 @@ let g:airline#extensions#whitespace#enabled = 0
 
 let g:haskell_conceal              = 0
 let g:necoghc_enable_detailed_browse = 1
+let g:syntastic_javascript_checkers = ['eslint']
 let g:jsx_ext_required = 0
 let g:ycm_semantic_triggers = {'haskell' : ['.']}
+
+" scroll of 
+nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
+set cursorline
+
+"gundu
+nnoremap <F5> :GundoToggle<CR>
+"
+"EASY ALIGN
+"
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+"
+"AG SEARCH
+"
+" use * to search current word in normal mode
+"nmap * <Plug>AgActionWord
+" use * to search selected text in visual mode
+"vmap * <Plug>AgActionVisual
