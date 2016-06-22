@@ -21,12 +21,18 @@ call plug#begin('~/.vim/plugged')
  Plug 'tpope/vim-dispatch'
  Plug 'tpope/vim-fugitive'
  Plug 'vim-scripts/FuzzyFinder'
+ Plug 'godlygeek/tabular' 
+
+ " HASKELL
  Plug 'eagletmt/ghcmod-vim'
+ Plug 'eagletmt/neco-ghc'
+ Plug 'Twinside/vim-haskellFold'
+ Plug 'Twinside/vim-syntax-haskell-cabal'
+
  Plug 'airblade/vim-gitgutter'
  "Plug 'Twinside/vim-haskellConceal'
  "Plug 'lukerandall/haskellmode-vim'
  Plug 'tpope/vim-jdaddy'
- Plug 'eagletmt/neco-ghc'
  Plug 'scrooloose/nerdcommenter'
  Plug 'scrooloose/nerdtree'
  Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -39,16 +45,16 @@ call plug#begin('~/.vim/plugged')
  Plug 'scrooloose/syntastic'
  Plug 'vim-scripts/taglist.vim'
  Plug 'bling/vim-airline'
+ Plug 'ntpeters/vim-airline-colornum'
+
  Plug 'vim-airline/vim-airline-themes'
  Plug 'tpope/vim-classpath'
  Plug 'guns/vim-clojure-highlight'
  Plug 'guns/vim-clojure-static'
  Plug 'tpope/vim-fireplace'
- Plug 'Twinside/vim-haskellFold'
  Plug 'tpope/vim-leiningen'
  Plug 'vim-scripts/vim-niji'
  Plug 'tpope/vim-surround'
- Plug 'Twinside/vim-syntax-haskell-cabal'
  Plug 'dag/vim2hs'
  Plug 'Shougo/vimproc.vim'
  Plug 'Shougo/vimshell.vim'
@@ -67,11 +73,51 @@ call plug#begin('~/.vim/plugged')
  " shortcut gaip=
 call plug#end()
 
-set nocompatible
 
 "let g:NERDTreeDirArrows=0
 
-syntax enable
+" DEFAULTS
+syntax on
+filetype plugin indent on
+
+set nocompatible
+set number
+set nowrap
+set showmode
+set tw=80
+set smartcase
+set smarttab
+set smartindent
+set autoindent
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set incsearch
+set mouse=a
+set history=1000
+
+set completeopt=menuone,menu,longest
+
+set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox
+set wildmode=longest,list,full
+set wildmenu
+set completeopt+=longest
+
+set t_Co=256
+
+set cmdheight=1
+"mine
+set relativenumber
+set ruler
+
+" tabspaces
+"set tabstop=8                   "A tab is 8 spaces
+"set softtabstop=4               "Insert 4 spaces when tab is pressed
+"set shiftwidth=4                "An indent is 4 spaces
+"set shiftround                  "Round spaces to nearest shiftwidth multiple
+"set nojoinspaces                "Don't convert spaces to tabs
+"
+" -end-- DEFAULTS ---
 colorscheme apprentice
 "cd $HOME/projects
 
@@ -84,22 +130,13 @@ map <F2> :cd %:p:h<CR>
 map ç :HLint<CR>
 map <C-Tab> <C-w><C-w>
 nnoremap <C-s> :w<cr>
+nnoremap ß :w<cr>
 map <C-F2> :!git add -A && git commit -am "C-F2" && git push origin master<CR>
 map <C-F3> :!git add -A && git commit -am "C-F2"<CR>
 set hlsearch
 noremap ÷ :let @/ = ""<cr>
 
-set relativenumber
-set ruler
 
-" tabspaces
-set tabstop=8                   "A tab is 8 spaces
-set expandtab                   "Always uses spaces instead of tabs
-set softtabstop=4               "Insert 4 spaces when tab is pressed
-set shiftwidth=4                "An indent is 4 spaces
-set smarttab                    "Indent instead of tab at start of line
-set shiftround                  "Round spaces to nearest shiftwidth multiple
-set nojoinspaces                "Don't convert spaces to tabs
 
 filetype plugin indent on
 "
@@ -128,20 +165,30 @@ au Bufenter *.cljc nnoremap E :Eval<CR>
 "let g:haddock_browser_callformat = "%s %s"
 "let g:haddock_docdir = "/Users/horus/Library/Haskell/Current/share/"
 "let g:paredit_mode = 1
+let g:haskell_tabular = 1
+
+vmap a= :Tabularize /=<CR>
+vmap a; :Tabularize /::<CR>
+vmap a- :Tabularize /-><CR>
 
 "au Bufenter *.hs compiler ghc
 "au Bufenter *.hs map <F6> :!ghc --make -o ~/Sites/%:t:r.cgi %<CR>
 au Bufenter *.hs nnoremap <A-.> :GhcModType<CR>
 au Bufenter *.hs nnoremap <A-,> :GhcModTypeClear<CR>
-au Bufenter *.hs nnoremap <A-x> :w<CR>:GhcModCheck<CR>
+au Bufenter *.hs nnoremap <A-x> :w<CR>:GhcModCheckAsync<CR>
 au Bufenter *.hs nnoremap <A-z> :w<CR>:make<CR>
+au Bufenter *.hs nnoremap <silent> _T :GhcModTypeInsert<CR>
 "au Bufenter *.hs setlocal completefunc=CompleteHaddock
 
+let g:haskell_conceal              = 0
+let g:necoghc_enable_detailed_browse = 1
  
 " CONFIGURATION for neco-ghc
 " Disable haskell-vim omnifunc
 let g:haskellmode_completion_ghc = 0
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+let g:ycm_semantic_triggers = {'haskell' : ['.']}
+"let g:necoghc_enable_detailed_browse = 1
 
 " -----------------
 "   -- C/C++ --
@@ -165,7 +212,6 @@ vnoremap ∆ :m '>+1<CR>gv=gv
 "   -- NEO COMPL --
 " -------------------
 "source $HOME/.vim/neocomplsettings.vim
-"let g:necoghc_enable_detailed_browse = 1
 
 " disable the arrow keys
 "inoremap  <Up>     <NOP>
@@ -185,6 +231,7 @@ nnoremap ,n :NERDTreeFind<cr>
 "inoremap <esc> <nop>
 inoremap jk <Esc>
 inoremap jj <Esc>
+inoremap kk <Esc>
 
 " adding maps for vimrc/gvimrc files
 nnoremap <leader>rc :split $HOME/.vim/vimrc/vimrc.vim<cr>  
@@ -205,39 +252,41 @@ nnoremap <leader>O O<esc>
 nnoremap <S-CR> O<esc>
 nnoremap <A-CR> o<esc>
 
+nnoremap <leader>o ha<CR><Esc>k$
 
-nnoremap <S-Space> i<space><esc>l
-nnoremap <S-Tab> i<tab><esc>l
+nnoremap <C-J> mao<Esc>`a
+nnoremap <C-K> maO<Esc>`a
+
+nnoremap <space> i<space><esc>l
+nnoremap <S-space> i<space><esc>l
+nnoremap <tab> i<tab><esc>l
 inoremap <C-x> <esc>lxi
 
-" Vimscript file settings ---------------------- {{{
+" Vimscript file settings ---------------------- 
 augroup maps
     au!
     nnoremap <leader>/ :/\c
 augroup END
-" }}}
+" 
 
-" Vimscript file settings ---------------------- {{{
+" Vimscript file settings ---------------------- 
 augroup filetype_vim
     au!
     au FileType vim setlocal foldmethod=marker
 augroup END
-" }}}
+" 
 
-" Vimscript  ---------------------- {{{
+" Vimscript  ---------------------- 
 noremap <F9> :exec 'source '.bufname('%')<cr>
-" }}}
+" 
 
 "let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 "let g:airline_detect_whitespace=0
 let g:airline#extensions#whitespace#enabled = 0
 
-let g:haskell_conceal              = 0
-let g:necoghc_enable_detailed_browse = 1
 let g:syntastic_javascript_checkers = ['eslint']
 let g:jsx_ext_required = 0
-let g:ycm_semantic_triggers = {'haskell' : ['.']}
 
 " scroll of 
 nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
@@ -254,10 +303,33 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+nnoremap <leader>en :cn<CR>
+nnoremap <leader>ep :cp<CR>
 "
 "AG SEARCH
 "
 " use * to search current word in normal mode
-"nmap * <Plug>AgActionWord
+nmap <leader>* <Plug>AgActionWord
 " use * to search selected text in visual mode
-"vmap * <Plug>AgActionVisual
+vmap <leader>* <Plug>AgActionVisual
+
+if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+    let &t_SI = "\<Esc>]50;CursorShape=0\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
+autocmd InsertLeave * highlight CursorLine ctermfg=none
+autocmd InsertEnter * highlight CursorLine ctermfg=208    
+
+let g:airline_theme='kalisi'
+
+if exists('$TMUX')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
