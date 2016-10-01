@@ -56,7 +56,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'vim-scripts/vim-niji'
  Plug 'tpope/vim-surround'
  Plug 'dag/vim2hs'
- Plug 'Shougo/vimproc.vim'
+ Plug 'Shougo/vimproc.vim', {'do' : 'make'}
  Plug 'Shougo/vimshell.vim'
  Plug 'vim-scripts/bufexplorer.zip'
  Plug 'pbrisbin/vim-syntax-shakespeare'
@@ -70,6 +70,9 @@ call plug#begin('~/.vim/plugged')
  Plug 'kien/ctrlp.vim'
  Plug 'tpope/vim-vinegar'
  Plug 'junegunn/vim-easy-align'
+ Plug 'xolox/vim-misc'
+ Plug 'xolox/vim-colorscheme-switcher'
+
  " shortcut gaip=
 call plug#end()
 
@@ -110,6 +113,8 @@ set cmdheight=1
 set relativenumber
 set ruler
 
+let g:ctrlp_root_markers = ['.ctrlp']
+
 " tabspaces
 "set tabstop=8                   "A tab is 8 spaces
 "set softtabstop=4               "Insert 4 spaces when tab is pressed
@@ -118,7 +123,9 @@ set ruler
 "set nojoinspaces                "Don't convert spaces to tabs
 "
 " -end-- DEFAULTS ---
-colorscheme apprentice
+"colorscheme apprentice
+colorscheme Monokai
+"colorscheme cabin
 "cd $HOME/projects
 
 au BufRead,BufNewFile *.fs set filetype=fs
