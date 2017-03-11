@@ -1,4 +1,4 @@
-" Load plugins from .vim/bundles using .vim/autoload/pathogen.vim
+" aoad plugins from .vim/bundles using .vim/autoload/pathogen.vim
 set t_Co=256
 call plug#begin('~/.vim/plugged')
  " javascript
@@ -28,7 +28,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'eagletmt/neco-ghc'
  Plug 'Twinside/vim-haskellFold'
  Plug 'Twinside/vim-syntax-haskell-cabal'
-
+ Plug 'bitc/vim-hdevtools'
  Plug 'airblade/vim-gitgutter'
  "Plug 'Twinside/vim-haskellConceal'
  "Plug 'lukerandall/haskellmode-vim'
@@ -124,8 +124,13 @@ let g:ctrlp_root_markers = ['.ctrlp']
 "
 " -end-- DEFAULTS ---
 "colorscheme apprentice
-colorscheme Monokai
 "colorscheme cabin
+"colorscheme Monokai
+"colorscheme molokai
+"colorscheme tropikos
+"colorscheme alduin
+colorscheme obsidian
+"
 "cd $HOME/projects
 
 au BufRead,BufNewFile *.fs set filetype=fs
@@ -182,6 +187,9 @@ vmap a- :Tabularize /-><CR>
 "au Bufenter *.hs map <F6> :!ghc --make -o ~/Sites/%:t:r.cgi %<CR>
 au Bufenter *.hs nnoremap <A-.> :GhcModType<CR>
 au Bufenter *.hs nnoremap <A-,> :GhcModTypeClear<CR>
+au Bufenter *.hs nnoremap <A-l> :HdevtoolsType<CR>
+au Bufenter *.hs nnoremap <A-;> :HdevtoolsClear<CR>
+au Bufenter *.hs nnoremap <A-'> :HdevtoolsInfo<CR>
 au Bufenter *.hs nnoremap <A-x> :w<CR>:GhcModCheckAsync<CR>
 au Bufenter *.hs nnoremap <A-z> :w<CR>:make<CR>
 au Bufenter *.hs nnoremap <silent> _T :GhcModTypeInsert<CR>
@@ -195,8 +203,11 @@ let g:necoghc_enable_detailed_browse = 1
 let g:haskellmode_completion_ghc = 0
 autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 let g:ycm_semantic_triggers = {'haskell' : ['.']}
-"let g:necoghc_enable_detailed_browse = 1
+let g:necoghc_enable_detailed_browse = 1
 
+" CONF ghc-mod
+hi ghcmodType ctermbg=gray
+let g:ghcmod_type_highlight = 'ghcmodType'
 " -----------------
 "   -- C/C++ --
 " -----------------
@@ -323,6 +334,7 @@ vmap <leader>* <Plug>AgActionVisual
 if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
     let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+    set clipboard=unnamed
 else
     let &t_SI = "\<Esc>]50;CursorShape=0\x7"
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
@@ -340,3 +352,4 @@ else
   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
+
