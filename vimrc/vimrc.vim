@@ -128,8 +128,8 @@ let g:ctrlp_root_markers = ['.ctrlp']
 "colorscheme Monokai
 "colorscheme molokai
 "colorscheme tropikos
-"colorscheme alduin
-colorscheme obsidian
+colorscheme alduin
+"colorscheme obsidian
 "
 "cd $HOME/projects
 
