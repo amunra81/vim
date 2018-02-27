@@ -1,14 +1,18 @@
 " aoad plugins from .vim/bundles using .vim/autoload/pathogen.vim
+set encoding=utf-8
+set noswapfile
 set t_Co=256
 let t_8f = "[38:2:%lu:%lu:%lum"
 let t_8b = "[48:2:%lu:%lu:%lum"
 
 call plug#begin('~/.vim/plugged')
  " javascript
+ Plug 'skielbasa/vim-material-monokai'
  Plug 'pangloss/vim-javascript'
  Plug 'nathanaelkane/vim-indent-guides'
  Plug 'jelera/vim-javascript-syntax'
  Plug 'Raimondi/delimitMate'
+ Plug 'flowtype/vim-flow'
  "Plug 'marijnh/tern_for_vim'
  Plug 'mxw/vim-jsx'
  "Plug 'helino/vim-json'
@@ -25,6 +29,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'tpope/vim-fugitive'
  Plug 'vim-scripts/FuzzyFinder'
  Plug 'godlygeek/tabular' 
+ Plug 'bkad/CamelCaseMotion'
 
  " HASKELL
  Plug 'eagletmt/ghcmod-vim'
@@ -45,7 +50,10 @@ call plug#begin('~/.vim/plugged')
  Plug 'ervandew/screen'
  Plug 'tpope/vim-sensible'
  Plug 'vim-scripts/SQLComplete.vim'
- Plug 'scrooloose/syntastic'
+
+ "Plug 'scrooloose/syntastic'
+ Plug 'w0rp/ale'
+
  Plug 'vim-scripts/taglist.vim'
  Plug 'bling/vim-airline'
  Plug 'ntpeters/vim-airline-colornum'
@@ -76,6 +84,8 @@ call plug#begin('~/.vim/plugged')
  Plug 'junegunn/vim-easy-align'
  Plug 'xolox/vim-misc'
  Plug 'xolox/vim-colorscheme-switcher'
+ Plug 'tpope/vim-obsession'
+ "Plug 'cskeeters/vim-smooth-scroll'
 
  " shortcut gaip=
 call plug#end()
@@ -205,6 +215,7 @@ au Bufenter *.hs nnoremap <silent> _T :GhcModTypeInsert<CR>
 
 let g:haskell_conceal              = 0
 let g:necoghc_enable_detailed_browse = 1
+let g:necoghc_use_stack = 1
  
 " CONFIGURATION for neco-ghc
 " Disable haskell-vim omnifunc
@@ -240,14 +251,14 @@ vnoremap ∆ :m '>+1<CR>gv=gv
 "source $HOME/.vim/neocomplsettings.vim
 
 " disable the arrow keys
-"inoremap  <Up>     <NOP>
-"inoremap  <Down>   <NOP>
-"inoremap  <Left>   <NOP>
-"inoremap  <Right>  <NOP>
-"noremap   <Up>     <NOP>
-"noremap   <Down>   <NOP>
-"noremap   <Left>   <NOP>
-"noremap   <Right>  <NOP>
+inoremap  <Up>     <NOP>
+inoremap  <Down>   <NOP>
+inoremap  <Left>   <NOP>
+inoremap  <Right>  <NOP>
+noremap   <Up>     <NOP>
+noremap   <Down>   <NOP>
+noremap   <Left>   <NOP>
+noremap   <Right>  <NOP>
 nnoremap ,m :NERDTreeToggle<cr>
 nnoremap ,n :NERDTreeFind<cr>
 
@@ -287,11 +298,12 @@ nnoremap <space> i<space><esc>l
 nnoremap <S-space> i<space><esc>l
 nnoremap <tab> i<tab><esc>l
 inoremap <C-x> <esc>lxi
+nnoremap <C-x> :ccl<CR><C-w><C-w>
 
 " Vimscript file settings ---------------------- 
 augroup maps
     au!
-    nnoremap <leader>/ :/\c
+    nnoremap <leader>/ /\c
 augroup END
 " 
 
@@ -314,8 +326,71 @@ let g:airline#extensions#whitespace#enabled = 0
 let g:syntastic_javascript_checkers = ['eslint']
 "let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
 let g:jsx_ext_required = 0
+"
+"vim-javascript
+let g:javascript_plugin_flow = 1
 
-" scroll of 
+let g:javascript_conceal_function             = "ƒ"
+let g:javascript_conceal_null                 = "ø"
+let g:javascript_conceal_this                 = "@"
+let g:javascript_conceal_return               = "⇚"
+let g:javascript_conceal_undefined            = "¿"
+let g:javascript_conceal_NaN                  = "ℕ"
+let g:javascript_conceal_prototype            = "¶"
+let g:javascript_conceal_static               = "•"
+let g:javascript_conceal_super                = "Ω"
+let g:javascript_conceal_arrow_function       = "⇒"
+"let g:javascript_conceal_noarg_arrow_function = "🞅"
+"let g:javascript_conceal_underscore_arrow_function = "🞅"
+set conceallevel=0
+map <leader>l :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
+
+"Flow
+let g:flow#autoclose = 1
+let g:flow#enable = 0
+let g:flow#omnifunc = 1
+"let g:flow#showquickfix = 0
+
+"Ale
+" Asynchronous Lint Engine (ALE)
+" Limit linters used for JavaScript.
+let g:ale_linters = {
+\  'javascript': ['eslint','flow'],
+\  'haskell': ['hdevtools','hlint']
+\}
+"\  'haskell': ['stack-ghc-mod','hdevtools','hlint']
+"let g:ale_set_loclist = 0
+"let g:ale_set_quickfix = 1
+let g:ale_javascript_eslint_use_global = 1
+let g:ale_javascript_flow_use_global = 1
+let g:ale_set_highlights = 1
+"let g:ale_haskell_hdevtools_options = '-g -Wall -fno-warn-orphans -fno-warn-missing-signatures'
+let g:ale_haskell_hdevtools_options = ''
+
+let g:airline#extensions#ale#enabled = 1
+highlight clear ALEErrorSign " otherwise uses error bg color (typically red)
+highlight clear ALEWarningSign " otherwise uses error bg color (typically red)
+"let g:ale_sign_error = '💉' " could use emoji
+"let g:ale_sign_error = '💥' " could use emoji
+"let g:ale_sign_error = '🔥' " could use emoji
+"let g:ale_sign_error = '🔴' " could use emoji
+"let g:ale_sign_error = '🚫' " could use emoji
+if (has("nvim"))
+    let g:ale_sign_error =  '✖'
+    let g:ale_sign_warning = '!'
+else 
+    let g:ale_sign_error =  '❗'
+    let g:ale_sign_warning = '❔'
+endif
+let g:ale_statusline_format = ['X %d', '? %d', '']
+" %linter% is the name of the linter that provided the message
+" %s is the error or warning message
+let g:ale_echo_msg_format = '%linter% says %s'
+" Map keys to navigate between lines with errors and warnings.
+nnoremap <leader>an :ALENextWrap<cr>
+nnoremap <leader>ap :ALEPreviousWrap<cr>
+
+" scrollof 
 nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
 set cursorline
 
@@ -353,7 +428,8 @@ autocmd InsertLeave * highlight CursorLine ctermfg=none
 autocmd InsertEnter * highlight CursorLine ctermfg=208    
 
 "let g:airline_theme='kalisi'
-let g:airline_theme='one'
+let g:airline_theme='molokai'
+"let g:airline_theme='one'
 
 if exists('$TMUX')
   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
@@ -380,3 +456,9 @@ endif
   endif
 "endif
 
+call camelcasemotion#CreateMotionMappings('<leader>')
+
+map <silent> ,w <Plug>CamelCaseMotion_w
+map <silent> ,b <Plug>CamelCaseMotion_b
+map <silent> ,e <Plug>CamelCaseMotion_e<Paste>
+map <silent> ,ge <Plug>CamelCaseMotion_e<Paste>
