@@ -6,19 +6,47 @@ let t_8f = "[38:2:%lu:%lu:%lum"
 let t_8b = "[48:2:%lu:%lu:%lum"
 
 call plug#begin('~/.vim/plugged')
+
  "" javascript
  Plug 'skielbasa/vim-material-monokai'
  Plug 'nathanaelkane/vim-indent-guides'
  Plug 'Raimondi/delimitMate'
- "Plug 'flowtype/vim-flow'
+
+ Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+" (Optional) Multi-entry selection UI.
+ Plug 'junegunn/fzf'
+
+ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+ "Plug 'Shougo/neosnippet'
+ "Plug 'Shougo/neosnippet-snippets'
+ Plug 'Shougo/denite.nvim'
+
+ Plug 'maxmellon/vim-jsx-pretty' 
+
  Plug 'amunra81/vim-flow'
  Plug 'pangloss/vim-javascript'  
- "Plug 'jelera/vim-javascript-syntax'
- Plug 'maxmellon/vim-jsx-pretty'
- "Plug 'mxw/vim-jsx'
- "
- "Plug 'helino/vim-json'
+ "Plug 'wokalski/autocomplete-flow'
  
+
+
+ "Plug 'peitalin/vim-jsx-typescript'
+ "Plug 'lucasecdb/vim-tsx'
+ Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
+ ""Plug 'Quramy/tsuquyomi'
+ "Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+ 
+ "" "'do': './install.sh';
+ "Plug 'mhartington/nvim-typescript', { 'for': 'typescript'} " ATENTIE: Asta nu a mers instalat de aici
+                                                            "" a trebuit sa ii dau install.sh manual, go there
+
+
+" Enable deoplete at startup
+
+
  " Ag shearch ************************
  Plug 'rking/ag.vim'
  Plug 'Chun-Yang/vim-action-ag'
@@ -26,8 +54,7 @@ call plug#begin('~/.vim/plugged')
 
  Plug 'eparreno/vim-l9'
 
- Plug 'Valloric/YouCompleteMe'
-
+ "Plug 'Valloric/YouCompleteMe'
 
 
  Plug 'chrisbra/csv.vim'
@@ -63,7 +90,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'tpope/vim-sensible'
  Plug 'vim-scripts/SQLComplete.vim'
 
- Plug 'scrooloose/syntastic'
+ "Plug 'scrooloose/syntastic'
  Plug 'w0rp/ale'
 
  Plug 'vim-scripts/taglist.vim'
@@ -80,7 +107,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'vim-scripts/vim-niji'
  Plug 'tpope/vim-surround'
  Plug 'dag/vim2hs'
- Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+ "Plug 'Shougo/vimproc.vim', {'do' : 'make'}
  Plug 'Shougo/vimshell.vim'
  Plug 'vim-scripts/bufexplorer.zip'
  Plug 'pbrisbin/vim-syntax-shakespeare'
@@ -90,7 +117,8 @@ call plug#begin('~/.vim/plugged')
  "COLORS
  Plug 'zefei/cake16'
  Plug 'flazz/vim-colorschemes'
- Plug 'rakr/vim-one'
+ "Plug 'rakr/vim-one'
+ Plug 'joshdick/onedark.vim'
  Plug 'sjl/gundo.vim'
  Plug 'kien/ctrlp.vim'
  Plug 'tpope/vim-vinegar'
@@ -100,10 +128,65 @@ call plug#begin('~/.vim/plugged')
  Plug 'tpope/vim-obsession'
 call plug#end()
 
-inoremap  <Up>     <NOP>
-inoremap  <Down>   <NOP>
-inoremap  <Left>   <NOP>
-inoremap  <Right>  <NOP>
+let g:LanguageClient_serverCommands = {
+    \ 'javascript': ['flow-language-server', '--stdio'],
+    \ 'typescript': ['node','/Users/horus/.nvm/versions/node/v10.13.0/lib/node_modules/javascript-typescript-langserver/lib/language-server-stdio'],
+    \ 'typescript.tsx': ['node','/Users/horus/.nvm/versions/node/v10.13.0/lib/node_modules/javascript-typescript-langserver/lib/language-server-stdio'],
+    \ 'typescript.ts': ['node','/Users/horus/.nvm/versions/node/v10.13.0/lib/node_modules/javascript-typescript-langserver/lib/language-server-stdio'],
+    \  'haskell': ['hie-wrapper'],
+    \ }
+
+"call LanguageClient#setDiagnosticsList('Disabled')
+let g:LanguageClient_diagnosticsEnable=0
+
+"let g:LanguageClient_diagnosticsSignsMax=0
+let g:LanguageClient_diagnosticsDisplay= { 
+            \1: { 
+            \"name": "Error", 
+            \"texthl": "ALEError", 
+            \"signText": "❗", 
+            \"signTexthl": "ALEErrorSign", 
+            \}, 
+            \2: { 
+            \"name": "Warning", 
+            \"texthl": "ALEWarning", 
+            \"signText": "⚠", 
+            \"signTexthl": "ALEWarningSign", 
+            \}, 
+            \3: { 
+            \"name": "Information", 
+            \"texthl": "ALEInfo", 
+            \"signText": "ℹ", 
+            \ "signTexthl": "ALEInfoSign", 
+            \}, 
+            \4: { 
+            \ "name": "Hint", 
+            \ "texthl": "ALEInfo", 
+            \ "signText": "➤", 
+            \ "signTexthl": "ALEInfoSign", 
+            \}, 
+            \} 
+
+let g:LanguageClient_hoverPreview = 'Never'
+" Pass a dictionary to set multiple options
+call deoplete#custom#option({
+\ 'smart_case': v:true,
+\ })
+
+" deoplete
+
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#file#enable_buffer_path = 1
+
+" neosnippet
+        
+let g:neosnippet#enable_completed_snippet = 1
+
+
+"inoremap  <Up>     <NOP>
+"inoremap  <Down>   <NOP>
+"inoremap  <Left>   <NOP>
+"inoremap  <Right>  <NOP>
 nnoremap   <Up>     <NOP>
 nnoremap   <Down>   <NOP>
 nnoremap   <Left>   <NOP>
@@ -159,12 +242,20 @@ let g:ctrlp_root_markers = ['.ctrlp']
 "colorscheme tropikos
 "colorscheme alduin
 "colorscheme obsidian
+
+let g:onedark_termcolors=256
 colorscheme onedark
 
 au BufRead,BufNewFile *.fs set filetype=fs
 au BufRead,BufNewFile *.fsx set filetype=fs
 au BufRead,BufNewFile *.cljc set filetype=clojure
+au BufRead,BufNewFile *.ts set filetype=typescript
+au BufRead,BufNewFile *.tsx set filetype=typescript
+
 au VimEnter *.hs setlocal completefunc=CompleteHaddock
+"au VimEnter *.js call deoplete#custom#option('auto_complete', v:false)
+"au VimLeave *.js call deoplete#custom#option('auto_complete', v:true)
+autocmd FileType javascript setlocal omnifunc=echo
 
 map <F2> :cd %:p:h<CR>
 map ç :HLint<CR>
@@ -230,9 +321,9 @@ let g:necoghc_use_stack = 1
 
 " CONFIGURATION for neco-ghc
 " Disable haskell-vim omnifunc
-let g:haskellmode_completion_ghc = 0
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-let g:ycm_semantic_triggers = {'haskell' : ['.']}
+"let g:haskellmode_completion_ghc = 0
+"autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+"let g:ycm_semantic_triggers = {'haskell' : ['.']}
 let g:necoghc_enable_detailed_browse = 1
 
 " CONF ghc-mod
@@ -260,8 +351,19 @@ inoremap jj <Esc>
 inoremap kk <Esc>
 
 "search
-nnoremap <leader>/ /\c
-nnoremap <leader>:/ :/\c
+nnoremap `/ /\c
+nnoremap `1 /\c
+nnoremap `;/ :/\c
+nnoremap `;1 :/\c
+
+nnoremap `j <C-w>j
+nnoremap `k <C-w>k
+nnoremap `h <C-w>h
+nnoremap `l <C-w>l
+nnoremap `` <C-w>w
+nnoremap `- <C-w>_
+nnoremap `= <C-w>=
+
 
 " adding maps for vimrc/gvimrc files
 nnoremap <leader>rc :split $HOME/.vim/vimrc/vimrc.vim<cr>  
@@ -328,7 +430,8 @@ let g:flow#omnifunc = 1
 " Limit linters used for JavaScript.
 let g:ale_linters = {
 \  'javascript': ['eslint','flow'],
-\  'haskell': ['hdevtools','hlint']
+\  'haskell': ['hdevtools','hlint'],
+\  'typescript': [ 'tslint', 'tsserver']
 \}
 "\  'haskell': ['stack-ghc-mod','hdevtools','hlint']
 "let g:ale_set_loclist = 0
@@ -339,7 +442,8 @@ let g:ale_set_highlights = 1
 let g:ale_haskell_hdevtools_options = '-g-Wall -g-fno-warn-orphans -g-fno-warn-missing-signatures'
 "let g:ale_haskell_hdevtools_options = ''
 "let g:hdevtools_options = '-g-w -g-fdefer-type-errors'
-let g:hdevtools_options = '-g-Wall -g-fno-warn-orphans -g-fno-warn-missing-signatures'
+"let g:hdevtools_options = '-g-Wall -g-fno-warn-orphans -g-fno-warn-missing-signatures'
+let g:syntastic_haskell_hdevtools_args =  '-g-Wall -g-fno-warn-orphans -g-fno-warn-missing-signatures'
 
 let g:airline#extensions#ale#enabled = 1
 highlight clear ALEErrorSign " otherwise uses error bg color (typically red)
@@ -349,14 +453,14 @@ highlight clear ALEWarningSign " otherwise uses error bg color (typically red)
 "let g:ale_sign_error = '🔥' " could use emoji
 "let g:ale_sign_error = '🔴' " could use emoji
 "let g:ale_sign_error = '🚫' " could use emoji
-if (has("nvimx"))
+"if (has("nvimx"))
    "let g:ale_sign_error =  '✖'
    "let g:ale_sign_warning = '!'
-else 
-   "let g:ale_sign_error =  '❗'
+"else 
+   let g:ale_sign_error =  '❗'
    ""let g:ale_sign_warning = '❔'
-   "let g:ale_sign_warning = '❕'
-endif
+   let g:ale_sign_warning = '❕'
+"endif
 let g:ale_statusline_format = ['X %d', '? %d', '']
 " %linter% is the name of the linter that provided the message
 " %s is the error or warning message
@@ -401,8 +505,8 @@ autocmd InsertLeave * highlight CursorLine ctermfg=none
 autocmd InsertEnter * highlight CursorLine ctermfg=208    
 
 "let g:airline_theme='kalisi'
-"let g:airline_theme='molokai'
-let g:airline_theme='one'
+let g:airline_theme='molokai'
+"let g:airline_theme='one'
 
 if exists('$TMUX')
  "let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
