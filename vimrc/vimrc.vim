@@ -7,98 +7,87 @@ let t_8b = "[48:2:%lu:%lu:%lum"
 
 call plug#begin('~/.vim/plugged')
 
- "" javascript
- Plug 'skielbasa/vim-material-monokai'
- Plug 'nathanaelkane/vim-indent-guides'
- Plug 'Raimondi/delimitMate'
-
+ " FSHARP
+ Plug 'kongo2002/fsharp-vim'
+ " CODE VALIDATION & COMPLETIONS ***********************************
+ Plug 'w0rp/ale'
+ Plug 'ervandew/supertab'
  Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-
-" (Optional) Multi-entry selection UI.
  Plug 'junegunn/fzf'
 
- Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+ if has('nvim')
+  "Plug 'amunra81/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+ else
+  Plug 'amunra81/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+ endif
+ "Plug 'nathanaelkane/vim-indent-guides'
  "Plug 'Shougo/neosnippet'
  "Plug 'Shougo/neosnippet-snippets'
- Plug 'Shougo/denite.nvim'
+ "Plug 'Shougo/denite.nvim'
+ ""****************************************************************
 
- Plug 'maxmellon/vim-jsx-pretty' 
+ " JAVASCRIPT *****************************************************
+ Plug 'maxmellon/vim-jsx-pretty'
 
  Plug 'amunra81/vim-flow'
- Plug 'pangloss/vim-javascript'  
+ Plug 'pangloss/vim-javascript'
  "Plug 'wokalski/autocomplete-flow'
- 
+ " ****************************************************************
 
+ " TYPESCRIPT *****************************************************
+ "Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
+ Plug 'leafgarland/typescript-vim'
+ " ****************************************************************
 
- "Plug 'peitalin/vim-jsx-typescript'
- "Plug 'lucasecdb/vim-tsx'
- Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
- ""Plug 'Quramy/tsuquyomi'
- "Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
- 
- "" "'do': './install.sh';
- "Plug 'mhartington/nvim-typescript', { 'for': 'typescript'} " ATENTIE: Asta nu a mers instalat de aici
-                                                            "" a trebuit sa ii dau install.sh manual, go there
-
-
-" Enable deoplete at startup
-
-
- " Ag shearch ************************
+ " AG SHEARCH *****************************************************
  Plug 'rking/ag.vim'
  Plug 'Chun-Yang/vim-action-ag'
- "************************************
+ " ****************************************************************
 
+ " AG SHEARCH *****************************************************
  Plug 'eparreno/vim-l9'
+ " ****************************************************************
 
- "Plug 'Valloric/YouCompleteMe'
-
-
+ " CSV ************************************************************
  Plug 'chrisbra/csv.vim'
- "Plug 'vim-scripts/dbext.vim'
- Plug 'tpope/vim-dispatch'
+ " ****************************************************************
+
+ " GIT & DIFF *****************************************************
  Plug 'tpope/vim-fugitive'
- "Plug 'vim-scripts/FuzzyFinder'
- Plug 'godlygeek/tabular' 
- Plug 'bkad/CamelCaseMotion'
-
- " HASKELL
- "Plug 'eagletmt/ghcmod-vim'
- "Plug 'eagletmt/neco-ghc'
- "Plug 'Twinside/vim-haskellFold'
- "Plug 'parsonsmatt/intero-neovim'
-
- Plug 'Twinside/vim-syntax-haskell-cabal'
- Plug 'amunra81/vim-hdevtools'
-
  Plug 'airblade/vim-gitgutter'
- "Plug 'Twinside/vim-haskellConceal'
- "Plug 'lukerandall/haskellmode-vim'
- Plug 'tpope/vim-jdaddy'
- Plug 'scrooloose/nerdcommenter'
- Plug 'scrooloose/nerdtree'
-
-
  Plug 'Xuyuanp/nerdtree-git-plugin'
- Plug 'vim-scripts/paredit.vim'
- Plug 'tpope/vim-projectionist'
- Plug 'edkolev/promptline.vim'
- Plug 'ervandew/screen'
- Plug 'tpope/vim-sensible'
- Plug 'vim-scripts/SQLComplete.vim'
+ Plug 'sjl/gundo.vim'
+ " ****************************************************************
 
- "Plug 'scrooloose/syntastic'
- Plug 'w0rp/ale'
+ " TEXT MANIPULATION  *********************************************
+ Plug 'scrooloose/nerdcommenter'
+ Plug 'godlygeek/tabular'
+ Plug 'junegunn/vim-easy-align'
+ Plug 'bkad/CamelCaseMotion'
+ Plug 'Raimondi/delimitMate'  " it's adding closing quotes,
+                              " parens, brackets
+ " ****************************************************************
 
+ " NAVIGATION *****************************************************
+ Plug 'scrooloose/nerdtree'
+ Plug 'kien/ctrlp.vim'
  Plug 'vim-scripts/taglist.vim'
+ " ****************************************************************
 
+ " AIRLINE ********************************************************
  Plug 'bling/vim-airline'
  Plug 'ntpeters/vim-airline-colornum'
  Plug 'vim-airline/vim-airline-themes'
+ " ****************************************************************
 
+ " CLOJURE ********************************************************
+ Plug 'vim-scripts/paredit.vim'
  Plug 'tpope/vim-classpath'
  Plug 'guns/vim-clojure-highlight'
  Plug 'guns/vim-clojure-static'
@@ -106,70 +95,89 @@ call plug#begin('~/.vim/plugged')
  Plug 'tpope/vim-leiningen'
  Plug 'vim-scripts/vim-niji'
  Plug 'tpope/vim-surround'
- Plug 'dag/vim2hs'
- "Plug 'Shougo/vimproc.vim', {'do' : 'make'}
- Plug 'Shougo/vimshell.vim'
- Plug 'vim-scripts/bufexplorer.zip'
- Plug 'pbrisbin/vim-syntax-shakespeare'
- Plug 'diepm/vim-rest-console'
+ "*****************************************************************
+
+ " HASKELL ********************************************************
+ Plug 'Twinside/vim-syntax-haskell-cabal'
+ Plug 'amunra81/vim-hdevtools'
+ Plug 'neovimhaskell/haskell-vim'
+ Plug 'itchyny/vim-haskell-indent'
  Plug 'Twinside/vim-hoogle'
- Plug 'majutsushi/tagbar'
- "COLORS
+ "Plug 'pbrisbin/vim-syntax-shakespeare'
+ "*****************************************************************
+
+ " JSON ***********************************************************
+ Plug 'diepm/vim-rest-console'
+ Plug 'tpope/vim-jdaddy'
+ "*****************************************************************
+
+ " COLORS ********************************************************
+ Plug 'skielbasa/vim-material-monokai'
  Plug 'zefei/cake16'
  Plug 'flazz/vim-colorschemes'
- "Plug 'rakr/vim-one'
  Plug 'joshdick/onedark.vim'
- Plug 'sjl/gundo.vim'
- Plug 'kien/ctrlp.vim'
- Plug 'tpope/vim-vinegar'
- Plug 'junegunn/vim-easy-align'
  Plug 'xolox/vim-misc'
  Plug 'xolox/vim-colorscheme-switcher'
- Plug 'tpope/vim-obsession'
-call plug#end()
+ "**************************************************************
 
+ "Plug 'tpope/vim-projectionist'
+ "Plug 'edkolev/promptline.vim'
+ "Plug 'ervandew/screen'
+ "Plug 'tpope/vim-sensible'
+ "Plug 'vim-scripts/SQLComplete.vim'
+ "Plug 'majutsushi/tagbar'
+ "Plug 'tpope/vim-obsession'
+ "Plug 'scrooloose/syntastic'
+ "Plug 'chrisbra/Colorizer'
+call plug#end()
+let g:fsharp_xbuild_path = "/Library/Frameworks/Mono.framework/Versions/Current/Commands/msbuild"
+
+
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
+nnoremap <leader>] :call LanguageClient#textDocument_definition()<CR>
 let g:LanguageClient_serverCommands = {
     \ 'javascript': ['flow-language-server', '--stdio'],
     \ 'typescript': ['node','/Users/horus/.nvm/versions/node/v10.13.0/lib/node_modules/javascript-typescript-langserver/lib/language-server-stdio'],
     \ 'typescript.tsx': ['node','/Users/horus/.nvm/versions/node/v10.13.0/lib/node_modules/javascript-typescript-langserver/lib/language-server-stdio'],
     \ 'typescript.ts': ['node','/Users/horus/.nvm/versions/node/v10.13.0/lib/node_modules/javascript-typescript-langserver/lib/language-server-stdio'],
-    \  'haskell': ['hie-wrapper'],
+    \ 'fsharp': ['dotnet', '/Users/horus/.nvm/versions/node/v10.13.0/lib/node_modules/fsharp-language-server/src/FSharpLanguageServer/bin/Release/netcoreapp2.0/FSharpLanguageServer.dll'],
     \ }
-
 "call LanguageClient#setDiagnosticsList('Disabled')
-let g:LanguageClient_diagnosticsEnable=0
+let g:LanguageClient_diagnosticsEnable=1
 
-"let g:LanguageClient_diagnosticsSignsMax=0
-let g:LanguageClient_diagnosticsDisplay= { 
-            \1: { 
-            \"name": "Error", 
-            \"texthl": "ALEError", 
-            \"signText": "❗", 
-            \"signTexthl": "ALEErrorSign", 
-            \}, 
-            \2: { 
-            \"name": "Warning", 
-            \"texthl": "ALEWarning", 
-            \"signText": "⚠", 
-            \"signTexthl": "ALEWarningSign", 
-            \}, 
-            \3: { 
-            \"name": "Information", 
-            \"texthl": "ALEInfo", 
-            \"signText": "ℹ", 
-            \ "signTexthl": "ALEInfoSign", 
-            \}, 
-            \4: { 
-            \ "name": "Hint", 
-            \ "texthl": "ALEInfo", 
-            \ "signText": "➤", 
-            \ "signTexthl": "ALEInfoSign", 
-            \}, 
-            \} 
+"let g:LanguageClient_diagnosticsSignsMax=4
+let g:LanguageClient_diagnosticsDisplay= {
+            \1: {
+            \"name": "Error",
+            \"texthl": "ALEError",
+            \"signText": "❗",
+            \"signTexthl": "ALEErrorSign",
+            \},
+            \2: {
+            \"name": "Warning",
+            \"texthl": "ALEWarning",
+            \"signText": "❕",
+            \"signTexthl": "ALEWarningSign",
+            \},
+            \3: {
+            \"name": "Information",
+            \"texthl": "ALEInfo",
+            \"signText": "ℹ",
+            \ "signTexthl": "ALEInfoSign",
+            \},
+            \4: {
+            \ "name": "Hint",
+            \ "texthl": "ALEInfo",
+            \ "signText": "➤",
+            \ "signTexthl": "ALEInfoSign",
+            \},
+            \}
 
 let g:LanguageClient_hoverPreview = 'Never'
 " Pass a dictionary to set multiple options
 call deoplete#custom#option({
+\ 'auto_complete_delay': 10,
 \ 'smart_case': v:true,
 \ })
 
@@ -179,9 +187,8 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#file#enable_buffer_path = 1
 
 " neosnippet
-        
-let g:neosnippet#enable_completed_snippet = 1
 
+let g:neosnippet#enable_completed_snippet = 1
 
 "inoremap  <Up>     <NOP>
 "inoremap  <Down>   <NOP>
@@ -191,7 +198,7 @@ nnoremap   <Up>     <NOP>
 nnoremap   <Down>   <NOP>
 nnoremap   <Left>   <NOP>
 nnoremap   <Right>  <NOP>
-nnoremap    - <NOP>
+nnoremap   - <NOP>
 nnoremap ,m :NERDTreeToggle<cr>
 nnoremap ,n :NERDTreeFind<cr>
 let g:NERDTreeWinSize=33
@@ -201,6 +208,7 @@ syntax on
 filetype plugin indent on
 
 
+set backspace=indent,eol,start
 set nocompatible
 set number
 set nowrap
@@ -231,10 +239,8 @@ set cmdheight=1
 set relativenumber
 set ruler
 
-let g:ctrlp_root_markers = ['.ctrlp']
 
 " -end-- DEFAULTS ---
-"colorscheme predawn
 "colorscheme apprentice
 "colorscheme cabin
 "colorscheme Monokai
@@ -244,23 +250,55 @@ let g:ctrlp_root_markers = ['.ctrlp']
 "colorscheme obsidian
 
 let g:onedark_termcolors=256
-colorscheme onedark
 
-au BufRead,BufNewFile *.fs set filetype=fs
-au BufRead,BufNewFile *.fsx set filetype=fs
+colorscheme onedark
+"colorscheme oxeded
+"colorscheme phoenix
+"colorscheme py-darcula
+"colorscheme alduid
+
+"colorscheme Revolution
+"colorscheme rootwater
+"colorscheme sandydune
+"colorscheme seti
+"colorscheme sexy-railcasts
+"colorscheme sky
+"colorscheme space-vim-dark
+"colorscheme predawn
+"colorscheme spacemacs-theme
+
+
+"let g:airline_theme='molokai'
+"let g:airline_theme='zenburn'
+"let g:airline_theme='lucius'
+"let g:airline_theme='onedark'
+let g:airline_theme='base16_twilight'
+
+"colorscheme alduin
+"let g:airline_theme='kalisi'
+
+"au BufRead,BufNewFile *.fs set filetype=fs
+"au BufRead,BufNewFile *.fsx set filetype=fs
+
 au BufRead,BufNewFile *.cljc set filetype=clojure
 au BufRead,BufNewFile *.ts set filetype=typescript
 au BufRead,BufNewFile *.tsx set filetype=typescript
 
-au VimEnter *.hs setlocal completefunc=CompleteHaddock
+"au VimEnter *.hs setlocal completefunc=CompleteHaddock
 "au VimEnter *.js call deoplete#custom#option('auto_complete', v:false)
 "au VimLeave *.js call deoplete#custom#option('auto_complete', v:true)
+
 autocmd FileType javascript setlocal omnifunc=echo
+command JSONFormat :%!python -m json.tool
+
 
 map <F2> :cd %:p:h<CR>
 map ç :HLint<CR>
 map <C-Tab> <C-w><C-w>
 nnoremap <C-s> :w<cr>
+nnoremap S <NOP>
+nnoremap SS :w<cr>
+
 nnoremap ß :w<cr>
 map <C-F2> :!git add -A && git commit -am "C-F2" && git push origin master<CR>
 map <C-F3> :!git add -A && git commit -am "C-F2"<CR>
@@ -268,9 +306,7 @@ set hlsearch
 noremap ÷ :let @/ = ""<cr>
 
 "supress - , ugly effect
-nnoremap - <Nop>
 
-filetype plugin indent on
 
 
 "
@@ -315,20 +351,20 @@ au Bufenter *.hs nnoremap <A-'> :HdevtoolsInfo<CR>
 au Bufenter *.hs nnoremap <A-z> :w<CR>:make<CR>
 "au Bufenter *.hs setlocal completefunc=CompleteHaddock
 
-let g:haskell_conceal              = 0
-let g:necoghc_enable_detailed_browse = 1
-let g:necoghc_use_stack = 1
+"let g:haskell_conceal              = 0
+"let g:necoghc_enable_detailed_browse = 1
+"let g:necoghc_use_stack = 1
 
 " CONFIGURATION for neco-ghc
 " Disable haskell-vim omnifunc
 "let g:haskellmode_completion_ghc = 0
 "autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 "let g:ycm_semantic_triggers = {'haskell' : ['.']}
-let g:necoghc_enable_detailed_browse = 1
+"let g:necoghc_enable_detailed_browse = 1
 
 " CONF ghc-mod
-hi ghcmodType ctermbg=gray
-let g:ghcmod_type_highlight = 'ghcmodType'
+"hi ghcmodType ctermbg=gray
+"let g:ghcmod_type_highlight = 'ghcmodType'
 " -----------------
 "   -- C/C++ --
 " -----------------
@@ -353,6 +389,8 @@ inoremap kk <Esc>
 "search
 nnoremap `/ /\c
 nnoremap `1 /\c
+nnoremap <leader>/ /\c
+nnoremap <leader>:/ /\c
 nnoremap `;/ :/\c
 nnoremap `;1 :/\c
 
@@ -366,17 +404,17 @@ nnoremap `= <C-w>=
 
 
 " adding maps for vimrc/gvimrc files
-nnoremap <leader>rc :split $HOME/.vim/vimrc/vimrc.vim<cr>  
-nnoremap <leader>rcu :split $HOME/.vim/vimrc/vimrc.unix.vim<cr>  
-nnoremap <leader>rcl :split $HOME/.vim/vimrc/vimrc.linux.vim<cr>  
-nnoremap <leader>rcw :split $HOME/.vim/vimrc/vimrc.win.vim<cr>  
-nnoremap <leader>rco :split $HOME/.vim/vimrc/vimrc.osx.vim<cr>  
+nnoremap <leader>rc :split $HOME/.vim/vimrc/vimrc.vim<cr>
+nnoremap <leader>rcu :split $HOME/.vim/vimrc/vimrc.unix.vim<cr>
+nnoremap <leader>rcl :split $HOME/.vim/vimrc/vimrc.linux.vim<cr>
+nnoremap <leader>rcw :split $HOME/.vim/vimrc/vimrc.win.vim<cr>
+nnoremap <leader>rco :split $HOME/.vim/vimrc/vimrc.osx.vim<cr>
 
-nnoremap <leader>grc :split $HOME/.vim/vimrc/gvimrc.vim<cr>  
-nnoremap <leader>grcu :split $HOME/.vim/vimrc/gvimrc.unix.vim<cr>  
-nnoremap <leader>grcl :split $HOME/.vim/vimrc/gvimrc.linux.vim<cr>  
-nnoremap <leader>grcw :split $HOME/.vim/vimrc/gvimrc.win.vim<cr>  
-nnoremap <leader>grco :split $HOME/.vim/vimrc/gvimrc.osx.vim<cr>  
+nnoremap <leader>grc :split $HOME/.vim/vimrc/gvimrc.vim<cr>
+nnoremap <leader>grcu :split $HOME/.vim/vimrc/gvimrc.unix.vim<cr>
+nnoremap <leader>grcl :split $HOME/.vim/vimrc/gvimrc.linux.vim<cr>
+nnoremap <leader>grcw :split $HOME/.vim/vimrc/gvimrc.win.vim<cr>
+nnoremap <leader>grco :split $HOME/.vim/vimrc/gvimrc.osx.vim<cr>
 
 " new line and enter in the normal mode
 nnoremap <leader>o o<esc>
@@ -392,6 +430,9 @@ nnoremap <C-K> maO<Esc>`a
 nnoremap <space> i<space><esc>l
 nnoremap <S-space> i<space><esc>l
 nnoremap <tab> i<tab><esc>l
+
+nnoremap ZA :suspend<CR>
+nnoremap ZQ :q<CR>
 
 "let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
@@ -431,9 +472,14 @@ let g:flow#omnifunc = 1
 let g:ale_linters = {
 \  'javascript': ['eslint','flow'],
 \  'haskell': ['hdevtools','hlint'],
-\  'typescript': [ 'tslint', 'tsserver']
+\  'typescript': [ 'tslint', 'tsserver'],
 \}
-"\  'haskell': ['stack-ghc-mod','hdevtools','hlint']
+let g:ale_fixers = {
+\   'typescript': ['tslint'],
+\}
+"\  'haskell': ['hie','hlint'],
+"\  'haskell': ['hdevtools','hlint'],
+"
 "let g:ale_set_loclist = 0
 "let g:ale_set_quickfix = 1
 let g:ale_javascript_eslint_use_global = 1
@@ -456,7 +502,7 @@ highlight clear ALEWarningSign " otherwise uses error bg color (typically red)
 "if (has("nvimx"))
    "let g:ale_sign_error =  '✖'
    "let g:ale_sign_warning = '!'
-"else 
+"else
    let g:ale_sign_error =  '❗'
    ""let g:ale_sign_warning = '❔'
    let g:ale_sign_warning = '❕'
@@ -469,10 +515,11 @@ let g:ale_echo_msg_format = '%linter% says %s'
 nnoremap <leader>an :ALENextWrap<cr>
 nnoremap <leader>ap :ALEPreviousWrap<cr>
 
-" scrollof 
+" scrollof
 nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
 set cursorline
 
+"
 "
 "EASY ALIGN
 "
@@ -482,8 +529,6 @@ xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-nnoremap <leader>en :cn<CR>
-nnoremap <leader>ep :cp<CR>
 "
 "AG SEARCH
 "
@@ -502,10 +547,9 @@ else
 endif
 
 autocmd InsertLeave * highlight CursorLine ctermfg=none
-autocmd InsertEnter * highlight CursorLine ctermfg=208    
+autocmd InsertEnter * highlight CursorLine ctermfg=208
 
 "let g:airline_theme='kalisi'
-let g:airline_theme='molokai'
 "let g:airline_theme='one'
 
 if exists('$TMUX')
@@ -520,7 +564,7 @@ endif
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
 "(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
-if (empty($TMUX) || has("nvim"))
+"if (empty($TMUX) || has("nvim"))
  if (has("nvim"))
  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -531,16 +575,36 @@ if (empty($TMUX) || has("nvim"))
  if (has("termguicolors"))
    set termguicolors
  endif
-endif
+"endif
 
-call camelcasemotion#CreateMotionMappings('<leader>')
+"augroup vim_debugger
+ "if has('nvim')
+    "set verbose=14
+    "set verbosefile=~/vim.log
+ "endif
+"augroup END
 
-map <silent> ,w <Plug>CamelCaseMotion_w
-map <silent> ,b <Plug>CamelCaseMotion_b
-map <silent> ,e <Plug>CamelCaseMotion_e<Paste>
-map <silent> ,ge <Plug>CamelCaseMotion_e<Paste>
-let g:python_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
+augroup haskell
+    let g:haskell_indent_disable = 1
+augroup END
+augroup ctrlp
+    let g:ctrlp_root_markers = ['.ctrlp']
+    nnoremap <c-b> :CtrlPBuffer<CR>
+augroup END
+
+augroup camelcase
+    call camelcasemotion#CreateMotionMappings('<leader>')
+
+    map <silent> ,w <Plug>CamelCaseMotion_w
+    map <silent> ,b <Plug>CamelCaseMotion_b
+    map <silent> ,e <Plug>CamelCaseMotion_e<Paste>
+    map <silent> ,ge <Plug>CamelCaseMotion_e<Paste>
+augroup END
+
+augroup Python
+    let g:python_host_prog = '/usr/local/bin/python'
+    let g:python3_host_prog = '/usr/local/bin/python3'
+augroup END
 
 augroup quickfix
    autocmd!
@@ -552,6 +616,23 @@ augroup javascript
    au BufLeave *.js set colorcolumn=0
 augroup END
 augroup haskell
+    function ClearHaskell()
+        execute 'LanguageClientStop'
+        execute 'ALEDisable'
+        execute 'ALEStopAllLSPs'
+
+        sleep 2000m
+        execute 'LanguageClientStart'
+        sleep 1000m
+        execute 'ALEEnable'
+    endfunction
+    "function HaskellLeave()
+        "let g:LanguageClient_diagnosticsEnable=0
+    "endfunction
+
+   "au VimEnter *.hs call HaskellEnter()
+   "au VimLeave *.hs call HaskellLeave()
+
    au Bufenter *.hs set colorcolumn=91
    au Bufenter *.hs set fo+=t
    au Bufenter *.hs set tw=90
