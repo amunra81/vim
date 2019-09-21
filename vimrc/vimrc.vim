@@ -1,11 +1,15 @@
 " Load plugins from .vim/bundles using .vim/autoload/pathogen.vim
 set encoding=utf-8
 set noswapfile
+
 set t_Co=256
 let t_8f = "[38:2:%lu:%lu:%lum"
 let t_8b = "[48:2:%lu:%lu:%lum"
 
 call plug#begin('~/.vim/plugged')
+
+ Plug 'ekalinin/Dockerfile.vim'
+ Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 
  " FSHARP
  Plug 'kongo2002/fsharp-vim'
@@ -105,6 +109,9 @@ call plug#begin('~/.vim/plugged')
  Plug 'Twinside/vim-hoogle'
  "Plug 'pbrisbin/vim-syntax-shakespeare'
  "*****************************************************************
+ " CSHARP *********************************************************
+ Plug 'OmniSharp/omnisharp-vim'
+ "*****************************************************************
 
  " JSON ***********************************************************
  Plug 'diepm/vim-rest-console'
@@ -130,21 +137,27 @@ call plug#begin('~/.vim/plugged')
  "Plug 'scrooloose/syntastic'
  "Plug 'chrisbra/Colorizer'
 call plug#end()
+
+" Use the stdio version of OmniSharp-roslyn:
+let g:OmniSharp_server_stdio = 0
+let g:OmniSharp_typeLookupInPreview = 1
+
 let g:fsharp_xbuild_path = "/Library/Frameworks/Mono.framework/Versions/Current/Commands/msbuild"
 
 
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
 nnoremap <leader>] :call LanguageClient#textDocument_definition()<CR>
+"\ 'javascript': ['flow-language-server', '--stdio'],
 let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['flow-language-server', '--stdio'],
+    \ 'javascript': ['flow', 'lsp'],
     \ 'typescript': ['node','/Users/horus/.nvm/versions/node/v10.13.0/lib/node_modules/javascript-typescript-langserver/lib/language-server-stdio'],
     \ 'typescript.tsx': ['node','/Users/horus/.nvm/versions/node/v10.13.0/lib/node_modules/javascript-typescript-langserver/lib/language-server-stdio'],
     \ 'typescript.ts': ['node','/Users/horus/.nvm/versions/node/v10.13.0/lib/node_modules/javascript-typescript-langserver/lib/language-server-stdio'],
     \ 'fsharp': ['dotnet', '/Users/horus/.nvm/versions/node/v10.13.0/lib/node_modules/fsharp-language-server/src/FSharpLanguageServer/bin/Release/netcoreapp2.0/FSharpLanguageServer.dll'],
     \ }
 "call LanguageClient#setDiagnosticsList('Disabled')
-let g:LanguageClient_diagnosticsEnable=1
+let g:LanguageClient_diagnosticsEnable=0
 
 "let g:LanguageClient_diagnosticsSignsMax=4
 let g:LanguageClient_diagnosticsDisplay= {
@@ -251,7 +264,6 @@ set ruler
 
 let g:onedark_termcolors=256
 
-colorscheme onedark
 "colorscheme oxeded
 "colorscheme phoenix
 "colorscheme py-darcula
@@ -266,6 +278,9 @@ colorscheme onedark
 "colorscheme space-vim-dark
 "colorscheme predawn
 "colorscheme spacemacs-theme
+
+colorscheme onedark
+"colorscheme deep-space
 
 
 "let g:airline_theme='molokai'
@@ -283,6 +298,7 @@ let g:airline_theme='base16_twilight'
 au BufRead,BufNewFile *.cljc set filetype=clojure
 au BufRead,BufNewFile *.ts set filetype=typescript
 au BufRead,BufNewFile *.tsx set filetype=typescript
+au BufRead,BufNewFile *.js.flow set filetype=javascript
 
 "au VimEnter *.hs setlocal completefunc=CompleteHaddock
 "au VimEnter *.js call deoplete#custom#option('auto_complete', v:false)
@@ -433,6 +449,8 @@ nnoremap <tab> i<tab><esc>l
 
 nnoremap ZA :suspend<CR>
 nnoremap ZQ :q<CR>
+nnoremap ZS :mks! ~/.local/.vim-sessions/rooster.vim<CR>
+nnoremap ZX :source ~/.local/.vim-sessions/rooster.vim<CR>
 
 "let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
@@ -473,9 +491,12 @@ let g:ale_linters = {
 \  'javascript': ['eslint','flow'],
 \  'haskell': ['hdevtools','hlint'],
 \  'typescript': [ 'tslint', 'tsserver'],
+\  'cs': ['OmniSharp'],
 \}
 let g:ale_fixers = {
-\   'typescript': ['tslint'],
+\  'typescript': ['tslint'],
+\  'javascript': ['eslint'],
+\  'haskell': ['hlint','stylish-haskell'],
 \}
 "\  'haskell': ['hie','hlint'],
 "\  'haskell': ['hdevtools','hlint'],
@@ -597,8 +618,8 @@ augroup camelcase
 
     map <silent> ,w <Plug>CamelCaseMotion_w
     map <silent> ,b <Plug>CamelCaseMotion_b
-    map <silent> ,e <Plug>CamelCaseMotion_e<Paste>
-    map <silent> ,ge <Plug>CamelCaseMotion_e<Paste>
+    map <silent> ,e <Plug>CamelCaseMotion_e
+    map <silent> ,ge <Plug>CamelCaseMotion_ge
 augroup END
 
 augroup Python

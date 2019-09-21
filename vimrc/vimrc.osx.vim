@@ -3,8 +3,10 @@ source $HOME/.vim/vimrc/vimrc.unix.vim
 map µ :NERDTreeToggle<cr>
 
 
-noremap ˘ :NextColorScheme<cr>
+" shift + alt + > 
+noremap ˘ :NextColorScheme<cr>  
 noremap ¯ :PrevColorScheme<cr>
+noremap ƒ :ALEFix<cr>
 
 " * Haskell bindings
 "au Bufenter *.hs nnoremap ≥ :GhcModType<CR>
@@ -25,6 +27,8 @@ au Bufenter *.js nnoremap ≈ :FlowMake<CR>
 au Bufenter *.js nnoremap ≥ :call LanguageClient#textDocument_hover()<CR>
 au Bufenter *.js nnoremap <C-]> :call LanguageClient#textDocument_definition()<CR>
 
+au Bufenter *.cs nnoremap <C-]>  :OmniSharpGotoDefinition<CR>
+
 au Bufenter *.fs nnoremap ≥ :call LanguageClient#textDocument_hover()<CR>
 au Bufenter *.fs nnoremap <leader>ir :call LanguageClient#textDocument_references()<CR>
 au Bufenter *.fs nnoremap <C-]> :call LanguageClient#textDocument_definition()<CR>
@@ -32,14 +36,11 @@ au Bufenter *.fs map Ω :w<CR>:make<CR>
 au Bufenter *.fsx nnoremap ≥ :call LanguageClient#textDocument_hover()<CR>
 au Bufenter *.fsx nnoremap <C-]> :call LanguageClient#textDocument_definition()<CR>
 
-"au Bufenter *.js nnoremap ≥ :FlowType<CR>
-"au Bufenter *.js nnoremap <C-]> :FlowJumpToDef<CR>
+"nnoremap Ô <C-W><C-J>
+"nnoremap  <C-W><C-K>
+"nnoremap Ó <C-W><C-L>
+"nnoremap Ò <C-W><C-H>
 
-"au Bufenter *.ts nnoremap ≥ : echo tsuquyomi#hint()<CR>
-"au Bufenter *.ts nnoremap ≥ :TSType<CR>
-"au Bufenter *.tsx nnoremap ≥ :TSType<CR>
-"au Bufenter *.ts nnoremap <C-]> :TSDef<CR>
-"au Bufenter *.tsx nnoremap <C-]> :TSDef<CR>
 au Bufenter *.ts nnoremap ≥ :call LanguageClient#textDocument_hover()<CR>
 au Bufenter *.ts nnoremap <C-]> :call LanguageClient#textDocument_definition()<CR>
 au Bufenter *.tsx nnoremap ≥ :call LanguageClient#textDocument_hover()<CR>
