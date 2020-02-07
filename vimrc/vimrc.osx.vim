@@ -6,7 +6,7 @@ map µ :NERDTreeToggle<cr>
 " shift + alt + > 
 noremap ˘ :NextColorScheme<cr>  
 noremap ¯ :PrevColorScheme<cr>
-noremap ƒ :ALEFix<cr>
+noremap ƒ :Prettier<cr>:ALEFix<cr>
 
 " * Haskell bindings
 "au Bufenter *.hs nnoremap ≥ :GhcModType<CR>
@@ -22,6 +22,7 @@ au Bufenter *.hs map Ω :w<CR>:make<CR>
 
 au Bufenter *.c map Ω \rc
 au Bufenter *.cpp map Ω \rc
+au Bufenter *.c nnoremap ≈ :make<CR>
 
 au Bufenter *.js nnoremap ≈ :FlowMake<CR>
 au Bufenter *.js nnoremap ≥ :call LanguageClient#textDocument_hover()<CR>

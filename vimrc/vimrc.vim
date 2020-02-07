@@ -9,11 +9,12 @@ let t_8b = "[48:2:%lu:%lu:%lum"
 call plug#begin('~/.vim/plugged')
 
  Plug 'ekalinin/Dockerfile.vim'
- Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+ "Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 
  " FSHARP
  Plug 'kongo2002/fsharp-vim'
  " CODE VALIDATION & COMPLETIONS ***********************************
+ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
  Plug 'w0rp/ale'
  Plug 'ervandew/supertab'
  Plug 'autozimu/LanguageClient-neovim', {
@@ -159,12 +160,16 @@ let g:LanguageClient_serverCommands = {
 "call LanguageClient#setDiagnosticsList('Disabled')
 let g:LanguageClient_diagnosticsEnable=0
 
+let g:ale_sign_error = '•'
+let g:ale_sign_warning = '•'
+"\"signText": "❗",
+"\"signText": "❕",
 "let g:LanguageClient_diagnosticsSignsMax=4
 let g:LanguageClient_diagnosticsDisplay= {
             \1: {
             \"name": "Error",
             \"texthl": "ALEError",
-            \"signText": "❗",
+            \"signText": "•",
             \"signTexthl": "ALEErrorSign",
             \},
             \2: {
@@ -186,6 +191,7 @@ let g:LanguageClient_diagnosticsDisplay= {
             \ "signTexthl": "ALEInfoSign",
             \},
             \}
+
 
 let g:LanguageClient_hoverPreview = 'Never'
 " Pass a dictionary to set multiple options
@@ -249,7 +255,7 @@ set t_Co=256
 
 set cmdheight=1
 "mine
-set relativenumber
+"set relativenumber
 set ruler
 
 
@@ -280,6 +286,7 @@ let g:onedark_termcolors=256
 "colorscheme spacemacs-theme
 
 colorscheme onedark
+"colorscheme dracula
 "colorscheme deep-space
 
 
@@ -287,7 +294,8 @@ colorscheme onedark
 "let g:airline_theme='zenburn'
 "let g:airline_theme='lucius'
 "let g:airline_theme='onedark'
-let g:airline_theme='base16_twilight'
+let g:airline_theme='base16_embers'
+"let g:airline_theme='base16_twilight'
 
 "colorscheme alduin
 "let g:airline_theme='kalisi'
@@ -524,10 +532,22 @@ highlight clear ALEWarningSign " otherwise uses error bg color (typically red)
    "let g:ale_sign_error =  '✖'
    "let g:ale_sign_warning = '!'
 "else
-   let g:ale_sign_error =  '❗'
-   ""let g:ale_sign_warning = '❔'
-   let g:ale_sign_warning = '❕'
+   "let g:ale_sign_error =  '❗'
+   """let g:ale_sign_warning = '❔'
+   "let g:ale_sign_warning = '❕'
+    "let g:ale_sign_error = '✖'
+    "let g:ale_sign_warning = '✖'
+    "hi link ALEErrorSign    Error
+    "hi link ALEWarningSign  Warning
+    let g:ale_sign_error = "◉"
+    let g:ale_sign_warning = "◉"
+    highlight ALEErrorSign ctermfg=9 ctermbg=15 guifg=#d7424d
+    "guifg=#C30500
+    "highlight ALEWarningSign ctermfg=11 ctermbg=15 guifg=#F1CE01
+    highlight ALEWarningSign ctermfg=11 ctermbg=15 guifg=#FFAF00
+    "guifg=#D19A66 
 "endif
+let g:gitgutter_enabled = 0
 let g:ale_statusline_format = ['X %d', '? %d', '']
 " %linter% is the name of the linter that provided the message
 " %s is the error or warning message
@@ -624,7 +644,8 @@ augroup END
 
 augroup Python
     let g:python_host_prog = '/usr/local/bin/python'
-    let g:python3_host_prog = '/usr/local/bin/python3'
+    "let g:python3_host_prog = '/usr/local/bin/python3'
+    let g:python3_host_prog = '/Users/horus/.pyenv/shims/python3'
 augroup END
 
 augroup quickfix
@@ -656,8 +677,10 @@ augroup haskell
 
    au Bufenter *.hs set colorcolumn=91
    au Bufenter *.hs set fo+=t
-   au Bufenter *.hs set tw=90
+   au Bufenter *.hs set tw=80
    au BufLeave *.hs set colorcolumn=0
    au BufLeave *.hs set fo-=t
    nnoremap <leader>ic 90i-<esc>a<CR><space>\|<space>
+   nnoremap <leader>it i//<esc>88a-<esc>a<CR><CR><esc>88a-<esc>ka<space>
+   ""//<space><esc>a<CR>//<esc>88i-<esc>
 augroup END
