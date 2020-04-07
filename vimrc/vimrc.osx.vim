@@ -2,11 +2,16 @@ source $HOME/.vim/vimrc/vimrc.unix.vim
 
 map µ :NERDTreeToggle<cr>
 
+"ipadpro
+"ï - alt f - ƒ
+map ï ƒ
+map ô ∆
 
 " shift + alt + > 
 noremap ˘ :NextColorScheme<cr>  
 noremap ¯ :PrevColorScheme<cr>
-noremap ƒ :Prettier<cr>:ALEFix<cr>
+noremap ƒ :ALEFix<cr>
+
 
 " * Haskell bindings
 "au Bufenter *.hs nnoremap ≥ :GhcModType<CR>
@@ -17,6 +22,7 @@ au Bufenter *.hs nnoremap ≤ :HdevtoolsClear<CR>
 au Bufenter *.hs nnoremap <leader>it :HdevtoolsInsertType<CR>
 au Bufenter *.hs nnoremap æ :HdevtoolsInfo<CR>
 au Bufenter *.hs nnoremap K :HoogleInfo<CR>
+au Bufenter *.hs nnoremap © :%!stylish-haskell<CR>
 au Bufenter *.hs map Ω :w<CR>:make<CR>
 "au Bufenter *.hs nnoremap <C-]> :call LanguageClient#textDocument_definition()<CR>
 

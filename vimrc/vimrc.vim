@@ -2,17 +2,23 @@
 set encoding=utf-8
 set noswapfile
 
+augroup Python
+    let g:python_host_prog = '/Users/horus/.pyenv/shims/python'
+    let g:python3_host_prog = '/Users/horus/.pyenv/shims/python3'
+augroup END
+
 set t_Co=256
 let t_8f = "[38:2:%lu:%lu:%lum"
 let t_8b = "[48:2:%lu:%lu:%lum"
 
 call plug#begin('~/.vim/plugged')
-
+ Plug 'FredKSchott/CoVim'
  Plug 'ekalinin/Dockerfile.vim'
  "Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 
  " FSHARP
  Plug 'kongo2002/fsharp-vim'
+ 
  " CODE VALIDATION & COMPLETIONS ***********************************
  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
  Plug 'w0rp/ale'
@@ -61,6 +67,10 @@ call plug#begin('~/.vim/plugged')
 
  " CSV ************************************************************
  Plug 'chrisbra/csv.vim'
+ " ****************************************************************
+
+ " CSV ************************************************************
+ Plug 'makerj/vim-pdf'
  " ****************************************************************
 
  " GIT & DIFF *****************************************************
@@ -128,15 +138,6 @@ call plug#begin('~/.vim/plugged')
  Plug 'xolox/vim-colorscheme-switcher'
  "**************************************************************
 
- "Plug 'tpope/vim-projectionist'
- "Plug 'edkolev/promptline.vim'
- "Plug 'ervandew/screen'
- "Plug 'tpope/vim-sensible'
- "Plug 'vim-scripts/SQLComplete.vim'
- "Plug 'majutsushi/tagbar'
- "Plug 'tpope/vim-obsession'
- "Plug 'scrooloose/syntastic'
- "Plug 'chrisbra/Colorizer'
 call plug#end()
 
 " Use the stdio version of OmniSharp-roslyn:
@@ -150,13 +151,14 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 
 nnoremap <leader>] :call LanguageClient#textDocument_definition()<CR>
 "\ 'javascript': ['flow-language-server', '--stdio'],
+let g:LanguageClient_rootMarkers = ['*.cabal', 'stack.yaml']
 let g:LanguageClient_serverCommands = {
     \ 'javascript': ['flow', 'lsp'],
-    \ 'typescript': ['node','/Users/horus/.nvm/versions/node/v10.13.0/lib/node_modules/javascript-typescript-langserver/lib/language-server-stdio'],
-    \ 'typescript.tsx': ['node','/Users/horus/.nvm/versions/node/v10.13.0/lib/node_modules/javascript-typescript-langserver/lib/language-server-stdio'],
-    \ 'typescript.ts': ['node','/Users/horus/.nvm/versions/node/v10.13.0/lib/node_modules/javascript-typescript-langserver/lib/language-server-stdio'],
-    \ 'fsharp': ['dotnet', '/Users/horus/.nvm/versions/node/v10.13.0/lib/node_modules/fsharp-language-server/src/FSharpLanguageServer/bin/Release/netcoreapp2.0/FSharpLanguageServer.dll'],
     \ }
+"\ 'typescript': ['node','/Users/horus/.nvm/versions/node/v10.13.0/lib/node_modules/javascript-typescript-langserver/lib/language-server-stdio'],
+"\ 'typescript.tsx': ['node','/Users/horus/.nvm/versions/node/v10.13.0/lib/node_modules/javascript-typescript-langserver/lib/language-server-stdio'],
+"\ 'typescript.ts': ['node','/Users/horus/.nvm/versions/node/v10.13.0/lib/node_modules/javascript-typescript-langserver/lib/language-server-stdio'],
+"\ 'fsharp': ['dotnet', '/Users/horus/.nvm/versions/node/v10.13.0/lib/node_modules/fsharp-language-server/src/FSharpLanguageServer/bin/Release/netcoreapp2.0/FSharpLanguageServer.dll'],
 "call LanguageClient#setDiagnosticsList('Disabled')
 let g:LanguageClient_diagnosticsEnable=0
 
@@ -393,10 +395,10 @@ au Bufenter *.hs nnoremap <A-z> :w<CR>:make<CR>
 "   -- C/C++ --
 " -----------------
 "au Bufenter *.c map <A-z> \rc
-"au Bufenter *.cpp map <A-z> \rc
 " ----------------------
 "   -- MOVING LINES --
 " ----------------------
+"au Bufenter *.cpp map <A-z> \rc
 nnoremap ˚ :m .-2<CR>==
 nnoremap ∆ :m .+1<CR>==
 
@@ -514,11 +516,41 @@ let g:ale_fixers = {
 let g:ale_javascript_eslint_use_global = 1
 let g:ale_javascript_flow_use_global = 1
 let g:ale_set_highlights = 1
-let g:ale_haskell_hdevtools_options = '-g-Wall -g-fno-warn-orphans -g-fno-warn-missing-signatures'
-"let g:ale_haskell_hdevtools_options = ''
-"let g:hdevtools_options = '-g-w -g-fdefer-type-errors'
-"let g:hdevtools_options = '-g-Wall -g-fno-warn-orphans -g-fno-warn-missing-signatures'
-let g:syntastic_haskell_hdevtools_args =  '-g-Wall -g-fno-warn-orphans -g-fno-warn-missing-signatures'
+
+let g:my_ale_hdevtools_normal       = '-g-Wall -g-fno-warn-orphans -g-fno-warn-missing-signatures'
+let g:my_ale_hdevtools_defer_errors = '-g-Wall -g-fno-warn-orphans -g-fno-warn-missing-signatures -g-fdefer-type-errors'
+
+let g:my_hdevtools_normal           = ''
+let g:my_hdevtools_defer_errors     = '-g-fdefer-type-errors'
+
+let g:ale_haskell_hdevtools_options = g:my_ale_hdevtools_normal
+let g:hdevtools_options             = g:my_hdevtools_normal
+let g:hdevtools_stack = 1
+
+let g:haskell_defer_errors = 0
+function ToggleHdevtoolsDefferErrors()
+    if (g:haskell_defer_errors)
+        let g:ale_haskell_hdevtools_options = g:my_ale_hdevtools_normal
+        let g:hdevtools_options             = g:my_hdevtools_normal
+        let g:haskell_defer_errors          = 0
+        echo "Hdevtools set to not defer type errors"
+    else
+        let g:ale_haskell_hdevtools_options = g:my_ale_hdevtools_defer_errors
+        let g:hdevtools_options             = g:my_hdevtools_defer_errors
+        let g:haskell_defer_errors          = 1
+        echo "Hdevtools set to defer type errors"
+    endif 
+endfunction
+
+function EchoAle()
+        echo g:ale_haskell_hdevtools_options 
+endfunction
+function EchoHdev()
+        echo g:hdevtools_options             
+endfunction
+
+
+nnoremap <Leader>de :call ToggleHdevtoolsDefferErrors()<CR>
 
 let g:airline#extensions#ale#enabled = 1
 highlight clear ALEErrorSign " otherwise uses error bg color (typically red)
@@ -642,11 +674,6 @@ augroup camelcase
     map <silent> ,ge <Plug>CamelCaseMotion_ge
 augroup END
 
-augroup Python
-    let g:python_host_prog = '/usr/local/bin/python'
-    "let g:python3_host_prog = '/usr/local/bin/python3'
-    let g:python3_host_prog = '/Users/horus/.pyenv/shims/python3'
-augroup END
 
 augroup quickfix
    autocmd!
