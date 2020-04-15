@@ -2,6 +2,7 @@
 set encoding=utf-8
 set noswapfile
 
+"set shellcmdflag=-ic
 augroup Python
     let g:python_host_prog = '/Users/horus/.pyenv/shims/python'
     let g:python3_host_prog = '/Users/horus/.pyenv/shims/python3'
@@ -12,10 +13,11 @@ let t_8f = "[38:2:%lu:%lu:%lum"
 let t_8b = "[48:2:%lu:%lu:%lum"
 
 call plug#begin('~/.vim/plugged')
- Plug 'FredKSchott/CoVim'
+ "Plug 'FredKSchott/CoVim'
  Plug 'ekalinin/Dockerfile.vim'
  "Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-
+ " TMUX
+ "Plug 'christoomey/vim-tmux-navigator'
  " FSHARP
  Plug 'kongo2002/fsharp-vim'
  
@@ -151,7 +153,7 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 
 nnoremap <leader>] :call LanguageClient#textDocument_definition()<CR>
 "\ 'javascript': ['flow-language-server', '--stdio'],
-let g:LanguageClient_rootMarkers = ['*.cabal', 'stack.yaml']
+let g:LanguageClient_rootMarkers = ['*.cabal', 'stack.yaml','package.json']
 let g:LanguageClient_serverCommands = {
     \ 'javascript': ['flow', 'lsp'],
     \ }
@@ -209,7 +211,7 @@ let g:deoplete#file#enable_buffer_path = 1
 
 " neosnippet
 
-let g:neosnippet#enable_completed_snippet = 1
+"let g:neosnippet#enable_completed_snippet = 1
 
 "inoremap  <Up>     <NOP>
 "inoremap  <Down>   <NOP>
@@ -246,12 +248,12 @@ set incsearch
 set mouse=a
 set history=1000
 
-set completeopt=menuone,menu,longest
+"set completeopt=menuone,menu,longest
 
 set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox
 set wildmode=longest,list,full
 set wildmenu
-set completeopt+=longest
+"set completeopt+=longest
 
 set t_Co=256
 
@@ -711,3 +713,9 @@ augroup haskell
    nnoremap <leader>it i//<esc>88a-<esc>a<CR><CR><esc>88a-<esc>ka<space>
    ""//<space><esc>a<CR>//<esc>88i-<esc>
 augroup END
+"augroup window_movment
+    "nnoremap <C-h> <C-w>h
+    "nnoremap <C-j> <C-w>j
+    "nnoremap <C-k> <C-w>k
+    "nnoremap <C-l> <C-w>l
+"augroup END
