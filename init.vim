@@ -1,1 +1,1 @@
-/Users/horus/.vimrc
+vimrc/vimrc.osx.vim

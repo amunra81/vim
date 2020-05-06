@@ -4,8 +4,10 @@ set noswapfile
 
 "set shellcmdflag=-ic
 augroup Python
-    let g:python_host_prog = '/Users/horus/.pyenv/shims/python'
-    let g:python3_host_prog = '/Users/horus/.pyenv/shims/python3'
+    "let g:python_host_prog = '/Users/horus/.pyenv/shims/python'
+    "let g:python3_host_prog = '/Users/horus/.pyenv/shims/python3'
+    let g:python_host_prog = '/usr/bin/python'
+    let g:python3_host_prog = '/usr/bin/python3'
 augroup END
 
 set t_Co=256
