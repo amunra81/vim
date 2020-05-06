@@ -1,0 +1,6 @@
+{
+    "diagnostic.virtualText": false,
+    "diagnostic.enableMessage":"always",
+    "diagnostic.enableSign": false,
+    "diagnostic.enable": false,
+}
