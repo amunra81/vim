@@ -32,7 +32,7 @@ au Bufenter *.c nnoremap ≈ :make<CR>
 
 au Bufenter *.js nnoremap ≈ :FlowMake<CR>
 au Bufenter *.js nnoremap ≥ :call LanguageClient#textDocument_hover()<CR>
-au Bufenter *.js nnoremap <C-]> :call LanguageClient#textDocument_definition()<CR>
+au Bufenter *.js nnoremap <C-]> :w<CR>:call LanguageClient#textDocument_definition()<CR>
 
 au Bufenter *.cs nnoremap <C-]>  :OmniSharpGotoDefinition<CR>
 

@@ -31,16 +31,17 @@ call plug#begin('~/.vim/plugged')
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
- Plug 'junegunn/fzf'
+ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+ Plug 'yuki-ycino/fzf-preview.vim'
 
+ Plug 'neoclide/coc.nvim', {'branch': 'release'}
  if has('nvim')
   "Plug 'amunra81/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
- else
-  Plug 'amunra81/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
+ "else
+  "Plug 'amunra81/deoplete.nvim'
+  "Plug 'roxma/nvim-yarp'
+  "Plug 'roxma/vim-hug-neovim-rpc'
  endif
  "Plug 'nathanaelkane/vim-indent-guides'
  "Plug 'Shougo/neosnippet'
@@ -202,15 +203,15 @@ let g:LanguageClient_diagnosticsDisplay= {
 
 let g:LanguageClient_hoverPreview = 'Never'
 " Pass a dictionary to set multiple options
-call deoplete#custom#option({
-\ 'auto_complete_delay': 10,
-\ 'smart_case': v:true,
-\ })
+"call deoplete#custom#option({
+"\ 'auto_complete_delay': 10,
+"\ 'smart_case': v:true,
+"\ })
 
 " deoplete
 
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#file#enable_buffer_path = 1
+"let g:deoplete#enable_at_startup = 1
+"let g:deoplete#file#enable_buffer_path = 1
 
 " neosnippet
 
@@ -260,7 +261,7 @@ set wildmenu
 
 set t_Co=256
 
-set cmdheight=1
+set cmdheight=2
 "mine
 "set relativenumber
 set ruler
@@ -592,6 +593,8 @@ let g:ale_echo_msg_format = '%linter% says %s'
 " Map keys to navigate between lines with errors and warnings.
 nnoremap <leader>an :ALENextWrap<cr>
 nnoremap <leader>ap :ALEPreviousWrap<cr>
+nnoremap fn :ALENextWrap<cr>
+nnoremap fp :ALEPreviousWrap<cr>
 
 " scrollof
 nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
@@ -855,4 +858,24 @@ augroup coc
     "nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
     "" Resume latest coc list.
     "nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+augroup END
+
+augroup fzfpreview 
+    nmap <Leader>f [fzf-p]
+    xmap <Leader>f [fzf-p]
+
+    nnoremap <silent> [fzf-p]p     :<C-u>FzfPreviewFromResources project_mru git<CR>
+    nnoremap <silent> [fzf-p]gs    :<C-u>FzfPreviewGitStatus<CR>
+    nnoremap <silent> [fzf-p]b     :<C-u>FzfPreviewBuffers<CR>
+    nnoremap <silent> [fzf-p]B     :<C-u>FzfPreviewAllBuffers<CR>
+    nnoremap <silent> [fzf-p]o     :<C-u>FzfPreviewFromResources buffer project_mru<CR>
+    nnoremap <silent> [fzf-p]<C-o> :<C-u>FzfPreviewJumps<CR>
+    nnoremap <silent> [fzf-p]g;    :<C-u>FzfPreviewChanges<CR>
+    nnoremap <silent> [fzf-p]/     :<C-u>FzfPreviewLines -add-fzf-arg=--no-sort -add-fzf-arg=--query="'"<CR>
+    nnoremap <silent> [fzf-p]*     :<C-u>FzfPreviewLines -add-fzf-arg=--no-sort -add-fzf-arg=--query="'<C-r>=expand('<cword>')<CR>"<CR>
+    nnoremap          [fzf-p]gr    :<C-u>FzfPreviewProjectGrep<Space>
+    xnoremap          [fzf-p]gr    "sy:FzfPreviewProjectGrep<Space>-F<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
+    nnoremap <silent> [fzf-p]t     :<C-u>FzfPreviewBufferTags<CR>
+    nnoremap <silent> [fzf-p]q     :<C-u>FzfPreviewQuickFix<CR>
+    nnoremap <silent> [fzf-p]l     :<C-u>FzfPreviewLocationList<CR>
 augroup END
