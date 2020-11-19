@@ -35,6 +35,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'yuki-ycino/fzf-preview.vim'
 
  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+ Plug 'sbdchd/neoformat'
  if has('nvim')
   "Plug 'amunra81/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -48,6 +49,10 @@ call plug#begin('~/.vim/plugged')
  "Plug 'Shougo/neosnippet-snippets'
  "Plug 'Shougo/denite.nvim'
  ""****************************************************************
+
+ " JAVASCRIPT *****************************************************
+ Plug 'tbastos/vim-lua'
+ " ****************************************************************
 
  " JAVASCRIPT *****************************************************
  Plug 'maxmellon/vim-jsx-pretty'
@@ -81,6 +86,7 @@ call plug#begin('~/.vim/plugged')
 
  " GIT & DIFF *****************************************************
  Plug 'tpope/vim-fugitive'
+ Plug 'shumphrey/fugitive-gitlab.vim'
  Plug 'airblade/vim-gitgutter'
  Plug 'Xuyuanp/nerdtree-git-plugin'
  Plug 'sjl/gundo.vim'
@@ -120,7 +126,7 @@ call plug#begin('~/.vim/plugged')
 
  " HASKELL ********************************************************
  Plug 'Twinside/vim-syntax-haskell-cabal'
- Plug 'amunra81/vim-hdevtools'
+ "Plug 'amunra81/vim-hdevtools'
  Plug 'neovimhaskell/haskell-vim'
  Plug 'itchyny/vim-haskell-indent'
  Plug 'Twinside/vim-hoogle'
@@ -145,7 +151,7 @@ call plug#begin('~/.vim/plugged')
  "**************************************************************
 
 call plug#end()
-
+let g:fugitive_gitlab_domains = ['https://gitlab.frago.ro']
 " Use the stdio version of OmniSharp-roslyn:
 let g:OmniSharp_server_stdio = 0
 let g:OmniSharp_typeLookupInPreview = 1
@@ -161,6 +167,7 @@ let g:LanguageClient_rootMarkers = ['*.cabal', 'stack.yaml','package.json']
 let g:LanguageClient_serverCommands = {
     \ 'javascript': ['flow', 'lsp'],
     \ }
+    "\ 'haskell': ['ghcide', '--lsp'],
 "\ 'typescript': ['node','/Users/horus/.nvm/versions/node/v10.13.0/lib/node_modules/javascript-typescript-langserver/lib/language-server-stdio'],
 "\ 'typescript.tsx': ['node','/Users/horus/.nvm/versions/node/v10.13.0/lib/node_modules/javascript-typescript-langserver/lib/language-server-stdio'],
 "\ 'typescript.ts': ['node','/Users/horus/.nvm/versions/node/v10.13.0/lib/node_modules/javascript-typescript-langserver/lib/language-server-stdio'],
@@ -503,8 +510,9 @@ let g:flow#omnifunc = 1
 "Ale
 " Asynchronous Lint Engine (ALE)
 " Limit linters used for JavaScript.
+"\  'haskell': ['hdevtools','hlint'],
 let g:ale_linters = {
-\  'haskell': ['hdevtools','hlint'],
+\  'haskell': ['hlint'],
 \  'cs': ['OmniSharp'],
 \  'javascript': ['eslint','flow'],
 \  'typescript': [ 'tslint', 'tsserver'],
@@ -593,8 +601,8 @@ let g:ale_echo_msg_format = '%linter% says %s'
 " Map keys to navigate between lines with errors and warnings.
 nnoremap <leader>an :ALENextWrap<cr>
 nnoremap <leader>ap :ALEPreviousWrap<cr>
-nnoremap fn :ALENextWrap<cr>
-nnoremap fp :ALEPreviousWrap<cr>
+nnoremap gn :ALENextWrap<cr>
+nnoremap gp :ALEPreviousWrap<cr>
 
 " scrollof
 nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
@@ -689,7 +697,7 @@ augroup quickfix
 augroup END
 
 augroup javascript
-   au Bufenter *.js set colorcolumn=91
+   au Bufenter *.js set colorcolumn=81
    au BufLeave *.js set colorcolumn=0
 augroup END
 augroup haskell
@@ -710,13 +718,13 @@ augroup haskell
    "au VimEnter *.hs call HaskellEnter()
    "au VimLeave *.hs call HaskellLeave()
 
-   au Bufenter *.hs set colorcolumn=91
+   au Bufenter *.hs set colorcolumn=81
    au Bufenter *.hs set fo+=t
    au Bufenter *.hs set tw=80
    au BufLeave *.hs set colorcolumn=0
    au BufLeave *.hs set fo-=t
-   nnoremap <leader>ic 90i-<esc>a<CR><space>\|<space>
-   nnoremap <leader>it i//<esc>88a-<esc>a<CR><CR><esc>88a-<esc>ka<space>
+   nnoremap <leader>ic 80i-<esc>a<CR><space>\|<space>
+   nnoremap <leader>it i//<esc>78a-<esc>a<CR><CR><esc>78a-<esc>ka<space>
    ""//<space><esc>a<CR>//<esc>88i-<esc>
 augroup END
 "augroup window_movment
@@ -795,7 +803,7 @@ augroup coc
     endfunction
 
     " Highlight the symbol and its references when holding the cursor.
-    autocmd CursorHold * silent call CocActionAsync('highlight')
+    "autocmd CursorHold * silent call CocActionAsync('highlight')
 
     " Symbol renaming.
     nmap <leader>rn <Plug>(coc-rename)
